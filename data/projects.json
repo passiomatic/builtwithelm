@@ -887,38 +887,38 @@
   },
   {
     "name": "Bike Configurator",
-    "previewImageUrl": "data/images/bike-configurator.png",
+    "description": "Pretty simple app for configuring a bike with colored components.",
     "primaryUrl": "https://dennisreimann.github.io/elm-bike-configurator/",
-    "repositoryUrl": "https://github.com/dennisreimann/elm-bike-configurator",
-    "description": "Pretty simple app for configuring a bike with colored components."
+    "previewImageUrl": "data/images/bike-configurator.png",
+    "repositoryUrl": "https://github.com/dennisreimann/elm-bike-configurator"
   },
   {
     "name": "Snake Game",
+    "description": "A classic Snake game for the web browser written in Elm.",
+    "primaryUrl": "https://liubko.github.io/elm-snake/",
     "previewImageUrl": "data/images/snake-game.png",
-    "primaryUrl": "http://liubko.github.io/elm-snake/",
-    "repositoryUrl": "https://github.com/liubko/elm-snake",
-    "description": "A classic Snake game for the web browser written in Elm."
+    "repositoryUrl": "https://github.com/liubko/elm-snake"
   },
   {
     "name": "The Cheese Palette",
+    "description": "An experimental version of The Cheese Palette's website.",
+    "primaryUrl": "https://github.com/mrmurphy/the-cheese-palette",
     "previewImageUrl": "data/images/the-cheese-palette.png",
-    "primaryUrl": "http://cheese.murph.xyz",
-    "repositoryUrl": "https://github.com/splodingsocks/the-cheese-palette",
-    "description": "An experimental version of thecheesepalette.com with an admin UI on the back end"
+    "repositoryUrl": "https://github.com/mrmurphy/the-cheese-palette"
   },
   {
     "name": "Froggy",
-    "previewImageUrl": "data/images/froggy.png",
+    "description": "A little puzzle game.",
     "primaryUrl": "http://thsoft.github.io/froggy",
-    "repositoryUrl": "https://github.com/thSoft/froggy",
-    "description": "A little puzzle game"
+    "previewImageUrl": "data/images/froggy.png",
+    "repositoryUrl": "https://github.com/thSoft/froggy"
   },
   {
     "name": "w3-elm",
+    "description": "An Elm port of the W3Schools HTML editor.",
+    "primaryUrl": "https://github.com/ahoskins/w3-elm",
     "previewImageUrl": "data/images/w3-elm.png",
-    "primaryUrl": "http://www.andrewhoskins.ca/projects/w3-elm",
-    "repositoryUrl": "https://github.com/ahoskins/w3-elm",
-    "description": "an Elm port of the W3Schools HTML editor"
+    "repositoryUrl": "https://github.com/ahoskins/w3-elm"
   },
   {
     "name": "Demoscene Concentration",
