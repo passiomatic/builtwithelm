@@ -852,38 +852,38 @@
   },
   {
     "name": "confs.info",
+    "description": "A place for designers and developers to find conferences.",
+    "primaryUrl": "https://github.com/robertjlooby/confsinfo",
     "previewImageUrl": "data/images/confs-info.jpg",
-    "primaryUrl": "http://confs.info/",
-    "repositoryUrl": "https://github.com/robertjlooby/confsinfo",
-    "description": "Filterable list of tech conferences."
+    "repositoryUrl": "https://github.com/robertjlooby/confsinfo"
   },
   {
     "name": "Loading Snake",
+    "description": "Play Snake while you're waiting for all the levels to be loaded. A submission, created in 2 days, for the Loading Screen Jam.",
+    "primaryUrl": "https://zinggi.itch.io/loading-snake",
     "previewImageUrl": "data/images/loading_snake.png",
-    "primaryUrl": "http://zinggi.itch.io/loading-snake",
-    "repositoryUrl": null,
-    "description": "Submission for the Loading Screen Jam created in two days."
+    "repositoryUrl": null
   },
   {
     "name": "Memory Game",
+    "description": "A classic memory game built with Elm.",
+    "primaryUrl": "https://nazanin1369.github.io/elm-memoryGame/",
     "previewImageUrl": "data/images/memory-game.png",
-    "primaryUrl": "http://nazanin1369.github.io/elm-memoryGame",
-    "repositoryUrl": "https://github.com/Nazanin1369/elm-memoryGame",
-    "description": "A classic memory game built with Elm."
+    "repositoryUrl": "https://github.com/Nazanin1369/elm-memoryGame"
   },
   {
     "name": "Elm Math Game",
+    "description": "A math game written in Elm.",
+    "primaryUrl": "https://arturopala.github.io/math-game-elm/",
     "previewImageUrl": "data/images/math-game-elm.png",
-    "repositoryUrl": "https://github.com/arturopala/math-game-elm",
-    "primaryUrl": "http://arturopala.github.io/math-game-elm/",
-    "description": "Math game written in Elm"
+    "repositoryUrl": "https://github.com/arturopala/math-game-elm"
   },
   {
-    "name": "CSS color guess game",
+    "name": "CSS color guessing game",
+    "description": "Can you guess the right CSS color by name?",
+    "primaryUrl": "https://joshy.github.io/elm-css-color-guess-game/",
     "previewImageUrl": "data/images/css-color-guess-game.png",
-    "primaryUrl": "http://irrwitz.github.io/elm-css-color-guess-game/",
-    "repositoryUrl": "https://github.com/irrwitz/elm-css-color-guess-game",
-    "description": "Can you guess the right css color by name?"
+    "repositoryUrl": "https://github.com/joshy/elm-css-color-guess-game"
   },
   {
     "name": "Bike Configurator",
