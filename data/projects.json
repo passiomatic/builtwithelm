@@ -780,75 +780,76 @@
     "primaryUrl": "http://niksilver.github.io/elm-tag-bubbles/",
     "repositoryUrl": "https://github.com/niksilver/elm-tag-bubbles",
     "description": "Exploring relationships between topics written about at theguardian.com"
-  }, {
+  },
+  {
     "name": "Elm Goban",
+    "description": "A simple Go board made with Elm.",
+    "primaryUrl": "https://mclauia.github.io/elm-goban",
     "previewImageUrl": "data/images/elm-goban.png",
-    "primaryUrl": "http://mclauia.github.io/elm-goban/",
-    "repositoryUrl": "https://github.com/mclauia/elm-goban",
-    "description": "A simple Go board made with Elm."
+    "repositoryUrl": "https://github.com/mclauia/elm-goban"
   },
   {
     "name": "Pattern Editor",
+    "description": "An editor for wallpaper group patterns.",
+    "primaryUrl": "https://eskimoblood.github.io/elm-wallpaper-editor",
     "previewImageUrl": "data/images/pattern.png",
-    "primaryUrl": "http://eskimoblood.github.io/elm-wallpaper-editor/",
-    "repositoryUrl": "https://github.com/eskimoblood/elm-wallpaper-editor",
-    "description": "Editor for wallpaper group pattern"
+    "repositoryUrl": "https://github.com/eskimoblood/elm-wallpaper-editor"
   },
   {
-    "name": "The slides archive",
-    "previewImageUrl": "data/images/slides.png",
-    "primaryUrl": "http://slides.mvlabs.it/",
-    "repositoryUrl": "https://github.com/marcosh/elm-joindin",
-    "description": "Repository of talk slides uploaded to Joind.in implemented in Elm"
+    "name": "Elm Joindin",
+    "description": "Talk slides uploaded to Joind.in.",
+    "primaryUrl": "https://github.com/marcosh/elm-joindin",
+    "previewImageUrl": "data/images/elm-joindin.png",
+    "repositoryUrl": "https://github.com/marcosh/elm-joindin"
   },
   {
     "name": "elm-labyrinth",
+    "description": "A Pac-Man like game.",
+    "primaryUrl": "https://www.janis-voigtlaender.eu/elm-labyrinth",
     "previewImageUrl": "data/images/elm-labyrinth.png",
-    "primaryUrl": "https://jvoigtlaender.github.io/elm-labyrinth",
-    "repositoryUrl": "https://github.com/jvoigtlaender/elm-labyrinth",
-    "description": "A small game implemented to play around with Elm"
+    "repositoryUrl": "https://github.com/jvoigtlaender/elm-labyrinth"
   },
   {
-    "name": "elmflux",
-    "previewImageUrl": "data/images/elmflux.png",
+    "name": "Elm Flux",
+    "description": "A visualization of Elm Signals.",
     "primaryUrl": "https://yang-wei.github.io/elmflux",
-    "repositoryUrl": "https://github.com/yang-wei/elmflux",
-    "description": "Visualization of Elm Signals"
+    "previewImageUrl": "data/images/elmflux.png",
+    "repositoryUrl": "https://github.com/yang-wei/elmflux"
   },
   {
-    "name": "Multi Player Rock Paper Scissors",
+    "name": "Multiplayer Rock Paper Scissors",
+    "description": "A multiplayer Rock Paper Scissors game implemented in Elm with an Elixir backend.",
+    "primaryUrl": "https://jkp.herokuapp.com/",
     "previewImageUrl": "data/images/rock-paper-scissors.png",
-    "primaryUrl": "https://jkp.herokuapp.com",
-    "repositoryUrl": "https://github.com/brianstorti/jan",
-    "description": "Rock paper scissors implemented in Elm with an Elixir backend"
+    "repositoryUrl": "https://github.com/brianstorti/jan"
   },
   {
     "name": "Elm Sudoku",
-    "previewImageUrl": "data/images/elm-sudoku.png",
+    "description": "Play Sudoku, powered by Elm.",
     "primaryUrl": "https://erich-9.github.io/elm-sudoku",
-    "repositoryUrl": "https://github.com/erich-9/elm-sudoku",
-    "description": "Play Sudoku, powered by Elm."
+    "previewImageUrl": "data/images/elm-sudoku.png",
+    "repositoryUrl": "https://github.com/erich-9/elm-sudoku"
   },
   {
     "name": "Gipher",
+    "description": "A Tinder like application for gifs built with Elm and Firebase.",
+    "primaryUrl": "https://github.com/matthieu-beteille/gipher",
     "previewImageUrl": "data/images/gipher.png",
-    "primaryUrl": "http://gipher.co/",
-    "repositoryUrl": "https://github.com/matthieu-beteille/gipher",
-    "description": "Tinder like application for gifs"
+    "repositoryUrl": "https://github.com/matthieu-beteille/gipher"
   },
   {
     "name": "Elm Events",
+    "description": "Upcoming Elm conference talks and meetups.",
+    "primaryUrl": "https://github.com/mbylstra/elm-events",
     "previewImageUrl": "data/images/elm-events.png",
-    "primaryUrl": "http://mbylstra.github.io/elm-events/",
-    "repositoryUrl": "https://github.com/mbylstra/elm-events",
-    "description": "Upcoming Elm Conference Talks and Meetups"
+    "repositoryUrl": "https://github.com/mbylstra/elm-events"
   },
   {
     "name": "Four in a Line",
+    "description": "An Elm implementation of the Minimax Algorithm applied to the Four In A Line game.",
+    "primaryUrl": "https://iitzco.github.io/FourInALine",
     "previewImageUrl": "data/images/four_in_a_line.png",
-    "primaryUrl": "http://iitzco.github.io/FourInALine/",
-    "repositoryUrl": "https://github.com/iitzco/FourInALine",
-    "description": "Elm implementation of Minimax Algorithm applied to Four In A Line game."
+    "repositoryUrl": "https://github.com/iitzco/FourInALine"
   },
   {
     "name": "confs.info",
