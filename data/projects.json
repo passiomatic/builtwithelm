@@ -748,38 +748,38 @@
   },
   {
     "name": "Credit Card Checkout",
+    "description": "A credit card form built with Elm and Elixir.",
+    "primaryUrl": "https://www.simonewebdesign.it/demo/elm",
     "previewImageUrl": "data/images/credit-card.jpg",
-    "primaryUrl": "http://www.simonewebdesign.it/demo/elm/",
-    "repositoryUrl": "https://github.com/simonewebdesign/elm-double-folding-pattern",
-    "description": "A credit card form built with Elm and Elixir."
+    "repositoryUrl": "https://github.com/simonewebdesign/elm-double-folding-pattern"
   },
   {
     "name": "I'll Do The Hot Voice!",
+    "description": "Make dialog boxes for characters from the SMASH INDIE HIT Undertale.",
+    "primaryUrl": "http://thehotvoice.mccowan.space/",
     "previewImageUrl": "data/images/idthv.png",
-    "primaryUrl": "http://ianmccowan.nfshost.com/undertale/",
-    "repositoryUrl": "https://github.com/valrus/undertale-dialog-generator",
-    "description": "Make dialog boxes for characters from the SMASH INDIE HIT Undertale."
+    "repositoryUrl": "https://github.com/valrus/undertale-dialog-generator"
   },
   {
     "name": "Circles",
+    "description": "A little sound toy.",
+    "primaryUrl": "https://irh.github.io/circles",
     "previewImageUrl": "data/images/circles.png",
-    "primaryUrl": "http://irh.github.io/circles",
-    "repositoryUrl": "https://github.com/irh/circles",
-    "description": "A little sound toy"
+    "repositoryUrl": "https://github.com/irh/circles"
   },
   {
     "name": "Asteroids",
+    "description": "An Asteroids clone.",
+    "primaryUrl": "https://irh.github.io/asteroids",
     "previewImageUrl": "data/images/asteroids.png",
-    "primaryUrl": "http://irh.github.io/asteroids",
-    "repositoryUrl": "https://github.com/irh/asteroids",
-    "description": "Asteroids in Elm"
+    "repositoryUrl": "https://github.com/irh/asteroids"
   },
   {
     "name": "Tag bubbles",
+    "description": "To explore the relationship between the many topics written about at theguardian.com.",
+    "primaryUrl": "https://niksilver.github.io/elm-tag-bubbles",
     "previewImageUrl": "data/images/tag-bubbles.png",
-    "primaryUrl": "http://niksilver.github.io/elm-tag-bubbles/",
-    "repositoryUrl": "https://github.com/niksilver/elm-tag-bubbles",
-    "description": "Exploring relationships between topics written about at theguardian.com"
+    "repositoryUrl": "https://github.com/niksilver/elm-tag-bubbles"
   },
   {
     "name": "Elm Goban",
