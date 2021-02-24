@@ -678,73 +678,73 @@
   },
   {
     "name": "elm news",
+    "description": "All Elm news in one place.",
+    "primaryUrl": "https://elm-news.com/",
     "previewImageUrl": "data/images/elm-news.png",
-    "primaryUrl": "https://oakesja.github.io/elm-news/",
-    "repositoryUrl": "https://github.com/oakesja/elm-news",
-    "description": "All elm news in one place."
+    "repositoryUrl": "https://github.com/oakesja/elm-news"
   },
   {
     "name": "Pacman",
-    "previewImageUrl": "data/images/pacman.png",
+    "description": "A Pacman clone written in Elm.",
     "primaryUrl": "https://kghandhi.github.io/pacman/",
-    "repositoryUrl": "https://github.com/kghandhi/pacman",
-    "description": "Pacman clone written in Elm."
+    "previewImageUrl": "data/images/pacman.png",
+    "repositoryUrl": "https://github.com/kghandhi/pacman"
   },
   {
-    "name": "GitHub Users Repo",
-    "previewImageUrl": "data/images/elm-github-user-repos.png",
+    "name": "GitHub User Repos",
+    "description": "Look up the public repos of a GitHub user.",
     "primaryUrl": "https://github.com/chrisbuttery/elm-github-user-repos",
-    "repositoryUrl": "https://github.com/chrisbuttery/elm-github-user-repos",
-    "description": "Look up the public repos of a GitHub user."
+    "previewImageUrl": "data/images/elm-github-user-repos.png",
+    "repositoryUrl": "https://github.com/chrisbuttery/elm-github-user-repos"
   },
   {
     "name": "Slackm8",
-    "previewImageUrl": "data/images/slackm8.png",
+    "description": "Randomly shuffle and split a team into groups, and invite users to Slack channels.",
     "primaryUrl": "https://github.com/chrisbuttery/slackm8",
-    "repositoryUrl": "https://github.com/chrisbuttery/slackm8",
-    "description": "Randomly shuffle & split a team into groups & invite users to Slack channels."
+    "previewImageUrl": "data/images/slackm8.png",
+    "repositoryUrl": "https://github.com/chrisbuttery/slackm8"
   },
   {
     "name": "ElmFiddle.io",
+    "description": "Elm snippet sharing site made almost entirely using Elm.",
+    "primaryUrl": "https://github.com/gabigrin/elmfiddle.io",
     "previewImageUrl": "data/images/elmfiddle_io.png",
-    "primaryUrl": "http://www.elmfiddle.io",
-    "repositoryUrl": "https://github.com/gabigrin/elmfiddle.io",
-    "description": "Elm snippet sharing app built (almost) entirely using Elm!"
+    "repositoryUrl": "https://github.com/gabigrin/elmfiddle.io"
   },
   {
     "name": "elmsteroids",
-    "previewImageUrl": "data/images/elmsteroids.jpg",
-    "primaryUrl": "http://yupferris.github.io/elmsteroids/",
-    "repositoryUrl": "https://github.com/yupferris/elmsteroids",
-    "description": "A non-trivial Asteroids clone written in Elm."
+    "description": "A non-trivial Asteroids clone written in Elm.",
+    "primaryUrl": "https://yupferris.github.io/elmsteroids/",
+    "previewImageUrl": "data/images/elmsteroids.png",
+    "repositoryUrl": "https://github.com/yupferris/elmsteroids"
   },
   {
     "name": "Pick and Gloat",
+    "description": "Use your thinking and reaction to compete with friends.",
+    "primaryUrl": "https://www.editgym.com/pick-and-gloat",
     "previewImageUrl": "data/images/pick-and-gloat.png",
-    "primaryUrl": "http://www.editgym.com/pick-and-gloat",
-    "repositoryUrl": "https://github.com/Dobiasd/pick-and-gloat",
-    "description": "Use your thinking and reaction to compete with friends."
+    "repositoryUrl": "https://github.com/Dobiasd/pick-and-gloat"
   },
   {
     "name": "Elm Typing Tutor",
+    "description": "A typing tutor for Russian written in Elm.",
+    "primaryUrl": "https://typing-tutor.hoelz.ro/ru",
     "previewImageUrl": "data/images/typing-tutor.png",
-    "primaryUrl": "http://typing-tutor.hoelz.ro/ru",
-    "repositoryUrl": "https://github.com/hoelzro/elm-typing-tutor",
-    "description": "A typing tutor for Russian written in Elm"
+    "repositoryUrl": "https://github.com/hoelzro/elm-typing-tutor"
   },
   {
     "name": "Stellaris Race Maker",
-    "previewImageUrl": "data/images/stellaris_race_maker.png",
+    "description": "An ugly tool to let you make your own race in Stellaris, the 4X from Paradox (Crusader Kings, Europa Universalis, ...).",
     "primaryUrl": "http://kaisersly.github.io/stellaris_race_maker",
-    "repositoryUrl": "https://github.com/kaisersly/stellaris_race_maker",
-    "description": "An ugly tool to let you make your own race in Stellaris, the 4X from Paradox (Crusader Kings, Europa Universalis, ...)."
+    "previewImageUrl": "data/images/stellaris_race_maker.png",
+    "repositoryUrl": "https://github.com/kaisersly/stellaris_race_maker"
   },
   {
     "name": "Mogee",
-    "previewImageUrl": "data/images/mogee.png",
+    "description": "A WebGL platformer that fits into a 64x64px screen.",
     "primaryUrl": "https://unsoundscapes.itch.io/mogee",
-    "repositoryUrl": "https://github.com/w0rm/elm-mogee",
-    "description": "A WebGL platformer that fits into 64x64px screen."
+    "previewImageUrl": "data/images/mogee.png",
+    "repositoryUrl": "https://github.com/w0rm/elm-mogee"
   },
   {
     "name": "Credit Card Checkout",
