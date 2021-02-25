@@ -601,80 +601,73 @@
   },
   {
     "name": "Pairs One",
+    "description": "A registration-free multiplayer memory/concentration game with an Elixir backend.",
+    "primaryUrl": "https://pairs.one/",
     "previewImageUrl": "data/images/pairs-one.png",
-    "primaryUrl": "http://pairs.one",
-    "repositoryUrl": "https://github.com/mxgrn/pairs.one",
-    "description": "Registration-free multiplayer Memory/Concentration game with Elixir backend"
+    "repositoryUrl": "https://github.com/mxgrn/pairs.one"
   },
   {
     "name": "TicTacToe",
-    "previewImageUrl": "data/images/tictactoe.png",
+    "description": "A simple TicTacToe game.",
     "primaryUrl": "https://allannozomu.github.io/TicTacToe/index.html",
-    "repositoryUrl": "https://github.com/AllanNozomu/TicTacToe",
-    "description": "A simple TicTacToe game."
+    "previewImageUrl": "data/images/tictactoe.png",
+    "repositoryUrl": "https://github.com/AllanNozomu/TicTacToe"
   },
   {
     "name": "Minesweeper",
-    "previewImageUrl": "data/images/minesweeper.png",
+    "description": "A simple implementation of the classic game Minesweeper.",
     "primaryUrl": "https://julianjelfs.github.io/elm-minesweeper/dist/index.html",
-    "repositoryUrl": "https://github.com/julianjelfs/elm-minesweeper",
-    "description": "A simple implementation of the classic game minesweeper."
+    "previewImageUrl": "data/images/minesweeper.png",
+    "repositoryUrl": "https://github.com/julianjelfs/elm-minesweeper"
   },
   {
     "name": "Circuits",
+    "description": "Play with electronic circuits.",
+    "primaryUrl": "https://www.janis-voigtlaender.eu/circuits",
     "previewImageUrl": "data/images/circuits.gif",
-    "primaryUrl": "https://jvoigtlaender.github.io/circuits",
-    "repositoryUrl": "https://github.com/jvoigtlaender/circuits",
-    "description": "Playing with electronic circuits."
+    "repositoryUrl": "https://github.com/jvoigtlaender/circuits"
   },
   {
     "name":"Tabata Timer",
+    "description": "A Tabata Timer in Elm, playing sounds between stages.",
+    "primaryUrl": "https://jackysee.github.io/tabata-timer",
     "previewImageUrl": "data/images/tabata-timer.png",
-    "primaryUrl": "https://github.com/jackysee/tabata-timer",
-    "repositoryUrl": "https://github.com/jackysee/tabata-timer",
-    "description": "A Tabata Timer in Elm, playing sounds between stages."
+    "repositoryUrl": "https://github.com/jackysee/tabata-timer"
   },
   {
-    "name": "elm-convert-case",
-    "previewImageUrl": "data/images/elm-convert-case.gif",
+    "name": "Elm Convert Case",
+    "description": "A simple string conversion tool with bonus horror theme.",
     "primaryUrl": "https://chrisbuttery.github.io/elm-convert-case/build/index.html",
-    "repositoryUrl": "https://github.com/chrisbuttery/elm-convert-case",
-    "description": "A simple string conversion tool with bonus horror theme."
-  },
-  {
-    "name": "HyperThemes",
-    "previewImageUrl": "data/images/hyperthemes.png",
-    "primaryUrl": "https://hyperthemes.matthi.coffee",
-    "repositoryUrl": "https://github.com/MatthiasWinkelmann/hyperthemes.matthi.coffee",
-    "description": "An overview of themes for HyperTerm with screenshots and usage data."
+    "previewImageUrl": "data/images/elm-convert-case.gif",
+    "repositoryUrl": "https://github.com/chrisbuttery/elm-convert-case"
   },
   {
     "name": "Reversi",
+    "description": "Reversi (aka Othello).",
+    "primaryUrl": "https://inderps.github.io/reversi-game-in-elm",
     "previewImageUrl": "data/images/reversi-game.png",
-    "primaryUrl": "https://inderps.github.io/reversi-game-in-elm/",
-    "repositoryUrl": "https://github.com/inderps/reversi-game-in-elm",
-    "description": "Reversi (aka Othello) implemented in elm "
+    "repositoryUrl": "https://github.com/inderps/reversi-game-in-elm"
   },
   {
     "name": "Don't fall",
+    "description": "Do not fall down or you lose.",
+    "primaryUrl": "https://arpad-m.github.io/dontfall",
     "previewImageUrl": "data/images/dontfall.png",
-    "primaryUrl": "https://arpad-m.github.io/dontfall/",
-    "repositoryUrl": "https://github.com/arpad-m/dontfall",
-    "description": "Do not fall down or you lose."
+    "repositoryUrl": "https://github.com/arpad-m/dontfall"
   },
   {
-    "name": "hoboapp.com",
+    "name": "Highly Opinionated Budget Organizer",
+    "description": "HOBO: Highly opinionated budget organizer (for families).",
+    "primaryUrl": "https://github.com/alex-kovshovik/hobo-elm",
     "previewImageUrl": "data/images/hoboapp.png",
-    "primaryUrl": "http://hoboapp.com",
-    "repositoryUrl": "https://github.com/aspushkinus/hobo-elm",
-    "description": "HOBO: Highly opinionated budget organizer (for families)"
+    "repositoryUrl": "https://github.com/alex-kovshovik/hobo-elm"
   },
   {
     "name": "Generic Elm Platform Game",
+    "description": "A platform game made in Elm.",
+    "primaryUrl": "https://iojichervo.github.io/Generic-Elm-Platform-Game",
     "previewImageUrl": "data/images/generic-elm-platform-game.png",
-    "primaryUrl": "https://iojichervo.github.io/Generic-Elm-Platform-Game/",
-    "repositoryUrl": "https://github.com/iojichervo/Generic-Elm-Platform-Game",
-    "description": "A platform game made in Elm."
+    "repositoryUrl": "https://github.com/iojichervo/Generic-Elm-Platform-Game"
   },
   {
     "name": "elm news",
