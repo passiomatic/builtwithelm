@@ -527,77 +527,70 @@
   },
   {
     "name": "TheNews",
+    "description": "Yet another Hacker News reader, this time written in Elm.",
+    "primaryUrl": "https://mthadley.com/thenews",
     "previewImageUrl": "data/images/the-news.png",
-    "primaryUrl": "https://mthadley.github.io/thenews/",
-    "repositoryUrl": "https://github.com/mthadley/thenews",
-    "description": "Yet another Hacker News reader, this time written in Elm."
+    "repositoryUrl": "https://github.com/mthadley/thenews"
   },
   {
     "name": "ABC Editor",
+    "description": "Edit and play music scores in ABC notation.",
+    "primaryUrl": "https://github.com/newlandsvalley/elm-abc-player",
     "previewImageUrl": "data/images/ABC-editor.jpg",
-    "primaryUrl": "http://www.tradtunedb.org.uk/abceditor",
-    "repositoryUrl": "https://github.com/newlandsvalley/elm-abc-player",
-    "description": "Edit and play music scores in ABC notation."
+    "repositoryUrl": "https://github.com/newlandsvalley/elm-abc-player"
   },
   {
     "name": "Pointing Poker",
-    "previewImageUrl": "data/images/elm-pointing-poker.png",
+    "description": "Pointing Poker useful for sprint plannings.",
     "primaryUrl": "https://poker-94672.firebaseapp.com",
-    "repositoryUrl": "https://github.com/liubko/elm-pointing-poker",
-    "description": "Pointing Poker useful for sprint plannings."
-  },
-  {
-    "name": "younity desktop and web client",
-    "previewImageUrl": "data/images/younity.png",
-    "primaryUrl": "https://getyounity.com/",
-    "repositoryUrl": null,
-    "description": "Desktop and web front-end for an easy and free home media server. Access, stream, and share all your videos, music, photos, and files from any device. No syncing, uploading or configuration!"
+    "previewImageUrl": "data/images/elm-pointing-poker.png",
+    "repositoryUrl": "https://github.com/liubko/elm-pointing-poker"
   },
   {
     "name": "Memory Game in Elm",
+    "description": "A very simple memory game written in Elm.",
+    "primaryUrl": "https://github.com/alpacaaa/elm-memory-game",
     "previewImageUrl": "data/images/alpacaaa-memory-game.png",
-    "primaryUrl": "https://runelm.io/c/fbi",
-    "repositoryUrl": "https://github.com/alpacaaa/elm-memory-game",
-    "description": "A very simple memory game written in Elm"
+    "repositoryUrl": "https://github.com/alpacaaa/elm-memory-game"
   },
   {
     "name": "MaltaJS registration page",
+    "description": "A simple registration page built with Elm, Sass and Node.js.",
+    "primaryUrl": "https://github.com/roedit/maltajs-elm",
     "previewImageUrl": "data/images/maltajs-registration-page.png",
-    "primaryUrl": "http://www.maltajs.com",
-    "repositoryUrl": "https://github.com/roedit/maltajs-elm",
-    "description": "A simple registration page built with Elm, Sass and Node.js"
+    "repositoryUrl": "https://github.com/roedit/maltajs-elm"
   },
   {
     "name": "Elm Heko'ish Watch",
-    "previewImageUrl": "data/images/elm-hekoish-watch.png",
+    "description": "A simple cryptic fullscreen watch inspired by Tokyoflash \"Heko\" wristwatch.",
     "primaryUrl": "https://astynax.github.io/elm-hekoish-watch/index.html",
-    "repositoryUrl": "https://github.com/astynax/elm-hekoish-watch",
-    "description": "A simple cryptic fullscreen watch inspired by Tokyoflash \"Heko\" wristwatch"
+    "previewImageUrl": "data/images/elm-hekoish-watch.png",
+    "repositoryUrl": "https://github.com/astynax/elm-hekoish-watch"
   },
-  { "name": "Elm Christmas tree",
-    "previewImageUrl": "data/images/elm-xmas-tree.png",
+  { "name": "Elm Christmas Tree",
+    "description": "A Christmas/New Year tree with randomized ornaments and illumination.",
     "primaryUrl": "https://astynax.github.io/elm-xmas-tree",
-    "repositoryUrl": "https://github.com/astynax/elm-xmas-tree",
-    "description": "A Christmas/New Year tree with the randomized ornaments and illumination"
+    "previewImageUrl": "data/images/elm-xmas-tree.png",
+    "repositoryUrl": "https://github.com/astynax/elm-xmas-tree"
   },
   {
     "name": "Elm Online Markdown Editor",
+    "description": "An online Markdown editor written in Elm.",
+    "primaryUrl": "https://3tty0n.github.io/elm-online-markdown-editor",
     "previewImageUrl": "data/images/elm-online-md-editor.png",
-    "primaryUrl": "https://3tty0n.github.io/elm-online-markdown-editor/",
-    "repositoryUrl": "https://github.com/3tty0n/elm-online-markdown-editor",
-    "description": "An online markdown editor written in Elm."
+    "repositoryUrl": "https://github.com/3tty0n/elm-online-markdown-editor"
   },
   { "name": "MovieInfo",
+    "description": "Information and ratings for movies, TV series and games.",
+    "primaryUrl": "https://ciavash.gitlab.io/MovieInfo",
     "previewImageUrl": "data/images/MovieInfo.jpg",
-    "primaryUrl": "https://ciavash.gitlab.io/MovieInfo/",
-    "repositoryUrl": "https://gitlab.com/CIAvash/MovieInfo",
-    "description": "Information and ratings for Movies, TV Series and games"
+    "repositoryUrl": "https://gitlab.com/CIAvash/MovieInfo"
   },
   { "name": "Orbiter 13",
-    "previewImageUrl": "http://i.imgur.com/6aKzubg.png",
-    "primaryUrl": "http://www.chadtech.us/orbiter-13/",
-    "repositoryUrl": "https://github.com/Chadtech/Orbiter-d",
-    "description": "Control your seven thrusters to travel from orbit to orbit collecting resources."
+    "description": "Control your seven thrusters to travel from orbit to orbit collecting resources.",
+    "primaryUrl": "https://www.chadtech.us/orbiter-13",
+    "previewImageUrl": "data/images/orbiter-13.png",
+    "repositoryUrl": "https://github.com/Chadtech/Orbiter-d"
   },
   {
     "name": "Pairs One",
