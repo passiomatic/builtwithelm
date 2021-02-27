@@ -457,73 +457,73 @@
   },
   {
     "name": "2048 clone in Elm",
+    "description": "Another clone of the 2048 game in Elm with animations and saving state to the localStorage.",
+    "primaryUrl": "https://zindel.github.io/game2048elm",
     "previewImageUrl": "data/images/game2048elm.png",
-    "primaryUrl": "https://zindel.github.io/game2048elm/",
-    "repositoryUrl": "https://github.com/zindel/game2048elm",
-    "description": "Another clone of the 2048 Game in Elm with animations and saving state to the localStorage"
+    "repositoryUrl": "https://github.com/zindel/game2048elm"
   },
   {
     "name": "Web based Call Control in Elm",
+    "description": "Web based call control, communicates to server using web socket, wrapped into Android app using WebView, and uses port to access contacts from device.",
+    "primaryUrl": "https://sip.uno/",
     "previewImageUrl": "data/images/sip_uno.png",
-    "primaryUrl": "http://sip.uno",
-    "repositoryUrl": "https://github.com/unomemento/basic-call-control",
-    "description": "Web based call control, communicates to server using  web socket, wrapped into Android app using WebView, uses port to access contacts from device"
+    "repositoryUrl": "https://github.com/oofp/basic-call-control"
   },
   {
     "name": "Nash - now.sh dashboard",
+    "description": "A small dashboard for zeit.co/now written in Elm.",
+    "primaryUrl": "https://github.com/littleStudent/now_dashboard",
     "previewImageUrl": "data/images/nash-now-dashboard.png",
-    "primaryUrl": "https://nash.now.sh",
-    "repositoryUrl": "https://github.com/littleStudent/now_dashboard",
-    "description": "Small dashboard for zeit.co/now written in elm"
+    "repositoryUrl": "https://github.com/littleStudent/now_dashboard"
   },
   {
     "name": "Idea Fight!",
+    "description": "A web application for helping you decide the priorities of your ideas.",
+    "primaryUrl": "https://idea-fight.hoelz.ro",
     "previewImageUrl": "data/images/idea-fight.png",
-    "primaryUrl": "http://idea-fight.hoelz.ro",
-    "repositoryUrl": "https://github.com/hoelzro/idea-fight",
-    "description": "A web application for helping you decide the priorities of your ideas"
+    "repositoryUrl": "https://github.com/hoelzro/idea-fight"
   },
   {
     "name": "Music Search Buddy",
-    "previewImageUrl": "data/images/music-search-buddy.jpg",
+    "description": "A webapp to search for music on Spotify and iTunes at the same time.",
     "primaryUrl": "https://ms.fullyforged.com",
-    "repositoryUrl": "https://github.com/cloud8421/music-search-buddy",
-    "description": "A webapp to search for music on Spotify and iTunes at the same time."
+    "previewImageUrl": "data/images/music-search-buddy.jpg",
+    "repositoryUrl": "https://github.com/cloud8421/music-search-buddy"
   },
   {
     "name": "Mastermind in Elm",
+    "description": "A mastermind clone written in Elm",
+    "primaryUrl": "https://github.com/alpacaaa/elm-mastermind",
     "previewImageUrl": "data/images/mastermind.png",
-    "primaryUrl": "https://runelm.io/c/f2t",
-    "repositoryUrl": "https://github.com/alpacaaa/elm-mastermind",
-    "description": "A mastermind clone written in Elm"
+    "repositoryUrl": "https://github.com/alpacaaa/elm-mastermind"
   },
   {
     "name": "Mob Clock",
+    "description": "A timer with sound made for mob programming.",
+    "primaryUrl": "https://mousaka.github.io/elm-mob-clock/",
     "previewImageUrl": "data/images/elmclock.png",
-    "primaryUrl": "http://mousaka.github.io/elm-mob-clock/",
-    "repositoryUrl": "https://github.com/Mousaka/elm-mob-clock",
-    "description": "A timer with sound made for mob programming."
+    "repositoryUrl": "https://github.com/Mousaka/elm-mob-clock"
   },
   {
     "name": "Retrorace",
-    "previewImageUrl": "data/images/retrorace.png",
+    "description": "Retrorace is a multiplayer websocket game where the aim is to be the first to reach the top of the screen.",
     "primaryUrl": "http://retrorace.neillyons.io/",
-    "repositoryUrl": "https://github.com/nwjlyons/retrorace",
-    "description": "Retrorace is a multiplayer websocket game where the aim is to be the first to reach the top of the screen."
+    "previewImageUrl": "data/images/retrorace.png",
+    "repositoryUrl": "https://github.com/nwjlyons/retrorace"
   },
   {
     "name": "Sweet Sweet Friction",
+    "description": "An arcade puzzle game of timing and patience.",
+    "primaryUrl": "https://martimatix.github.io/sweet-sweet-friction",
     "previewImageUrl": "data/images/sweet-sweet-friction.jpg",
-    "primaryUrl": "https://martimatix.github.io/sweet-sweet-friction/",
-    "repositoryUrl": "https://github.com/martimatix/sweet-sweet-friction",
-    "description": "An arcade puzzle game of timing and patience"
+    "repositoryUrl": "https://github.com/martimatix/sweet-sweet-friction"
   },
   {
     "name": "Toy Neural Network",
-    "previewImageUrl": "data/images/elm-brain2.jpg",
+    "description": "An interactive neural network toy.",
     "primaryUrl": "https://the-fool.github.io/elm-brain",
-    "repositoryUrl": "https://github.com/the-fool/fuzzy-elm",
-    "description": "An interactive neural network toy."
+    "previewImageUrl": "data/images/elm-brain.jpg",
+    "repositoryUrl": "https://github.com/the-fool/fuzzy-elm"
   },
   {
     "name": "TheNews",
