@@ -1,4 +1,10 @@
 [
+  { "name": "VSH Tarifrechner - CGPA Europe",
+    "previewImageUrl": "data/images/cgpa-vsh-tarifrechner.jpg",
+    "primaryUrl": "https://rechner.vermittlerdeckung.de/",
+    "repositoryUrl": null,
+    "description": "CGPA Europe's online financial loss liability insurance rate calculator for insurance intermediaries."
+  },
   { "name": "GPXmagic",
     "previewImageUrl": "data/images/GPXmagic.png",
     "primaryUrl": "http://stepwiserefinement.co.uk/GPXmagic/index.html",
