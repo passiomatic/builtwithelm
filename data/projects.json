@@ -1,4 +1,28 @@
 [
+  { "name": "ThankU",
+    "previewImageUrl": "data/images/thanku.jpg",
+    "primaryUrl": "https://www.thanku.social",
+    "repositoryUrl": null,
+    "description": "Say ThankU and Do Good - Plant trees, clean the ocean, and protect animals."
+  },
+  { "name": "VSH Tarifrechner - CGPA Europe",
+    "previewImageUrl": "data/images/cgpa-vsh-tarifrechner.jpg",
+    "primaryUrl": "https://rechner.vermittlerdeckung.de/",
+    "repositoryUrl": null,
+    "description": "CGPA Europe's online financial loss liability insurance rate calculator for insurance intermediaries."
+  },
+  { "name": "GPXmagic",
+    "previewImageUrl": "data/images/GPXmagic.png",
+    "primaryUrl": "http://stepwiserefinement.co.uk/GPXmagic/index.html",
+    "repositoryUrl": "https://github.com/peterjamesward/GPXviz",
+    "description": "Visualize and edit GPX cycle routes."
+  },
+  { "name": "Chain Home",
+    "previewImageUrl": "data/images/ChainHome.png",
+    "primaryUrl": "https://storage.googleapis.com/chainhome/index.html",
+    "repositoryUrl": null,
+    "description": "Shows the challenges facing an operator at a Chain Home station during the Battle of Britain in 1940."
+  },
   { "name": "cnsr.lol",
     "previewImageUrl": "data/images/cnsr-lol.png",
     "primaryUrl": "https://cnsr.lol",
