@@ -1,4 +1,10 @@
 [
+  { "name": "ThankU",
+    "previewImageUrl": "data/images/thanku.jpg",
+    "primaryUrl": "https://www.thanku.social",
+    "repositoryUrl": null,
+    "description": "Say ThankU and Do Good - Plant trees, clean the ocean, and protect animals."
+  },
   { "name": "VSH Tarifrechner - CGPA Europe",
     "previewImageUrl": "data/images/cgpa-vsh-tarifrechner.jpg",
     "primaryUrl": "https://rechner.vermittlerdeckung.de/",
