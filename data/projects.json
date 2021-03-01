@@ -1,4 +1,10 @@
 [
+  { "name": "Elm Designer",
+    "previewImageUrl": "data/images/elm-designer.jpg",
+    "primaryUrl": "https://github.com/passiomatic/elm-designer",
+    "repositoryUrl": "https://github.com/passiomatic/elm-designer",
+    "description": "A visual code generator for Elm UI."
+  },
   { "name": "ThankU",
     "previewImageUrl": "data/images/thanku.jpg",
     "primaryUrl": "https://www.thanku.social",
