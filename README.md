@@ -2,7 +2,7 @@
 
 An inspiring collection of web applications built with Elm.
 
-It showcases the amazing work the Elm community is doing while serving as a rich source of examples for all Elm developers.
+It showcases the amazing work the Elm community is doing and serves as a rich source of examples for all Elm developers.
 
 ## Submissions
 
