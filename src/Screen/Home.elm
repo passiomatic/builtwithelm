@@ -232,7 +232,7 @@ viewSidebar query =
         [ div
             [ class "builtwithelm-SidebarLogoContainer" ]
             [ a [ href "/" ]
-                [ img [ src "assets/logo.svg", class "builtwithelm-Logo" ] [] ]
+                [ img [ src "images/logo.svg", class "builtwithelm-Logo" ] [] ]
             ]
         , h1 []
             [ a
@@ -315,7 +315,7 @@ viewOpenSourceLink project =
         , class "builtwithelm-Link"
         ]
         [ img
-            [ src "assets/github.svg"
+            [ src "images/github.svg"
             , class "builtwithelm-GithubLogo"
             ]
             []

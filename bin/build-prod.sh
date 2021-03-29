@@ -2,8 +2,8 @@
 
 set -e
 
-js="build/main.js"
-min="build/main.min.js"
+js="public/app.js"
+min="public/app.min.js"
 
 elm make src/Main.elm --optimize --output $js
 
