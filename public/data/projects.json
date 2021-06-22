@@ -1,5 +1,12 @@
 [
   {
+    "name": "Knighty Knight",
+    "description": "A Chess Knight movement training app built with Elm and Elm UI.",
+    "primaryUrl": "https://knightyknight.netlify.app/",
+    "previewImageUrl": "data/images/knighty-knight.png",
+    "repositoryUrl": "https://github.com/AliNisarAhmed/knighty-knight"
+  },
+  {
     "name": "CtPaint",
     "description": "A pixel art image editor in Elm.",
     "primaryUrl": "https://ctpaint.org/app",
