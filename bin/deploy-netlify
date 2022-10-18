@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+function deploy {
+  local branch="netlify"
+
+  if git rev-parse --verify "$branch^{commit}" &> /dev/null; then
+    echo "Deploying..."
+
+    local tmp=$(mktemp -d)
+
+    git worktree add "$tmp" "$branch"
+
+    cp -r "$build"/* "$tmp"
+    cp "$project/config/netlify/_redirects" "$tmp"
+
+    git -C "$tmp" add .
+
+    local hash="$(git log -n 1 --format='%h' master)"
+    local message="Site updated to $hash"
+
+    if git -C "$tmp" commit -m "$message"; then
+      git -C "$tmp" push -u origin HEAD
+    fi
+
+    git worktree remove --force "$tmp"
+
+    echo "Deployed!"
+  else
+    error "Please create a branch named \"$branch\" in order to deploy."
+  fi
+}
+
+function error {
+  printf "Error: %s\n" "$@" >&2
+  exit 1
+}
+
+optimize=1
+
+clean && build && deploy

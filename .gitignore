@@ -1,4 +1,2 @@
-deploy/
+.build/
 elm-stuff/
-node_modules/
-public/app.js
