@@ -4,6 +4,9 @@ mkdir -p "$build"
 
 cp -r "$project"/public/* "$build"
 
+files_to_format="$project/src"
+elm-format "$files_to_format" --validate || elm-format "$files_to_format" --yes
+
 # Build JS
 
 main="$project/src/Main.elm"
