@@ -7,6 +7,7 @@ pkgs.mkShell {
     pkgs.caddy
     pkgs.elmPackages.elm
     pkgs.elmPackages.elm-format
+    pkgs.nodejs-16_x
     pkgs.nodePackages.terser
   ];
 

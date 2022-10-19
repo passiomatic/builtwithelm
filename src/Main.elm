@@ -97,7 +97,7 @@ update msg model =
 
                         _ ->
                             let
-                                ( screen, cmd ) =
+                                ( screen, _ ) =
                                     Screen.Home.init model.key params
                                         |> Tuple.mapBoth Home (Cmd.map HomeMsg)
                             in

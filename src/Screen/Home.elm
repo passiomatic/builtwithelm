@@ -1,12 +1,19 @@
-module Screen.Home exposing (Model, Msg, init, update, view, withParams)
+module Screen.Home exposing
+    ( Model
+    , Msg
+    , init
+    , update
+    , view
+    , withParams
+    )
 
 import Api
-import Browser.Dom as Dom
-import Browser.Navigation as Nav
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Html.Events as E
-import Html.Keyed
+import Browser.Dom as BD
+import Browser.Navigation as BN
+import Html as H
+import Html.Attributes as HA
+import Html.Events as HE
+import Html.Keyed as HK
 import Http
 import Pager exposing (Pager)
 import Project exposing (Project)
@@ -20,7 +27,7 @@ import Task
 
 
 type alias Model =
-    { key : Nav.Key
+    { key : BN.Key
     , remoteData : RemoteData (Pager Project)
     , pageSize : Int
     , query : String
@@ -28,7 +35,7 @@ type alias Model =
     }
 
 
-init : Nav.Key -> Route.HomeParams -> ( Model, Cmd Msg )
+init : BN.Key -> Route.HomeParams -> ( Model, Cmd Msg )
 init key homeParams =
     ( { key = key
       , remoteData = Loading
@@ -83,7 +90,7 @@ update msg model =
             ( { model | remoteData = remoteData }
             , Cmd.batch
                 [ scrollToTop
-                , Nav.pushUrl model.key <|
+                , BN.pushUrl model.key <|
                     homeHref model.query (currentPageNumber remoteData)
                 ]
             )
@@ -96,7 +103,7 @@ update msg model =
             ( { model | remoteData = remoteData }
             , Cmd.batch
                 [ scrollToTop
-                , Nav.pushUrl model.key <|
+                , BN.pushUrl model.key <|
                     homeHref model.query (currentPageNumber remoteData)
                 ]
             )
@@ -114,7 +121,7 @@ update msg model =
             ( { model | remoteData = remoteData, query = query }
             , Cmd.batch
                 [ scrollToTop
-                , Nav.pushUrl model.key <|
+                , BN.pushUrl model.key <|
                     homeHref query (currentPageNumber remoteData)
                 ]
             )
@@ -151,7 +158,7 @@ update msg model =
 
 scrollToTop : Cmd Msg
 scrollToTop =
-    Task.perform (always ScrolledToTop) (Dom.setViewport 0 0)
+    Task.perform (always ScrolledToTop) (BD.setViewport 0 0)
 
 
 homeHref : String -> Int -> String
@@ -170,28 +177,28 @@ currentPageNumber remoteData =
 -- VIEW
 
 
-view : Model -> List (Html Msg)
+view : Model -> List (H.Html Msg)
 view model =
     [ case model.remoteData of
         Loading ->
-            div
-                [ class "builtwithelm-Container" ]
+            H.div
+                [ HA.class "builtwithelm-Container" ]
                 [ viewSidebar model.query
-                , div
-                    [ class "builtwithelm-Content" ]
-                    [ div [ class "builtwithelm-ListContainer" ]
-                        [ text "Loading..." ]
+                , H.div
+                    [ HA.class "builtwithelm-Content" ]
+                    [ H.div [ HA.class "builtwithelm-ListContainer" ]
+                        [ H.text "Loading..." ]
                     ]
                 ]
 
         Failure ->
-            div
-                [ class "builtwithelm-Container" ]
+            H.div
+                [ HA.class "builtwithelm-Container" ]
                 [ viewSidebar model.query
-                , div
-                    [ class "builtwithelm-Content" ]
-                    [ div [ class "builtwithelm-ListContainer" ]
-                        [ text "Unable to load projects" ]
+                , H.div
+                    [ HA.class "builtwithelm-Content" ]
+                    [ H.div [ HA.class "builtwithelm-ListContainer" ]
+                        [ H.text "Unable to load projects" ]
                     ]
                 ]
 
@@ -206,17 +213,17 @@ view model =
                 disableNext =
                     not page.hasNext
             in
-            div
-                [ class "builtwithelm-Container" ]
+            H.div
+                [ HA.class "builtwithelm-Container" ]
                 [ viewSidebar model.query
-                , div
-                    [ class "builtwithelm-Content" ]
-                    [ Html.Keyed.node
+                , H.div
+                    [ HA.class "builtwithelm-Content" ]
+                    [ HK.node
                         "div"
-                        [ class "builtwithelm-ListContainer" ]
+                        [ HA.class "builtwithelm-ListContainer" ]
                         (viewProjects page.data)
-                    , div
-                        [ class "builtwithelm-Paging" ]
+                    , H.div
+                        [ HA.class "builtwithelm-Paging" ]
                         [ viewPageSizeSelect model.pageSize [ 5, 25, 50, 100 ]
                         , viewPageButton PressedPrev disablePrev "Newer"
                         , viewPageButton PressedNext disableNext "Older"
@@ -226,134 +233,134 @@ view model =
     ]
 
 
-viewSidebar : String -> Html Msg
+viewSidebar : String -> H.Html Msg
 viewSidebar query =
-    div [ class "builtwithelm-Sidebar" ]
-        [ div [ class "builtwithelm-SidebarHeader" ]
-            [ div
-                [ class "builtwithelm-SidebarLogoContainer" ]
-                [ a [ href "/" ]
-                    [ img [ src "images/logo.svg", class "builtwithelm-Logo" ] [] ]
+    H.div [ HA.class "builtwithelm-Sidebar" ]
+        [ H.div [ HA.class "builtwithelm-SidebarHeader" ]
+            [ H.div
+                [ HA.class "builtwithelm-SidebarLogoContainer" ]
+                [ H.a [ HA.href "/" ]
+                    [ H.img [ HA.src "images/logo.svg", HA.class "builtwithelm-Logo" ] [] ]
                 ]
-            , h1 []
-                [ a
-                    [ href "/"
-                    , class "builtwithelm-BuiltWithLink"
+            , H.h1 []
+                [ H.a
+                    [ HA.href "/"
+                    , HA.class "builtwithelm-BuiltWithLink"
                     ]
-                    [ span
-                        [ class "builtwithelm-BuiltWithText" ]
-                        [ text "builtwith" ]
-                    , span [] [ text "elm" ]
+                    [ H.span
+                        [ HA.class "builtwithelm-BuiltWithText" ]
+                        [ H.text "builtwith" ]
+                    , H.span [] [ H.text "elm" ]
                     ]
                 ]
             ]
-        , div [ class "builtwithelm-SearchContainer" ]
-            [ input
-                [ type_ "text"
-                , placeholder "Search"
-                , value query
-                , autofocus True
-                , E.onInput EnteredQuery
-                , class "builtwithelm-SearchInput"
+        , H.div [ HA.class "builtwithelm-SearchContainer" ]
+            [ H.input
+                [ HA.type_ "text"
+                , HA.placeholder "Search"
+                , HA.value query
+                , HA.autofocus True
+                , HE.onInput EnteredQuery
+                , HA.class "builtwithelm-SearchInput"
                 ]
                 []
             ]
-        , div [ class "builtwithelm-Links" ]
-            [ div [] [ a [ href "https://github.com/dwayne/builtwithelm#submissions" ] [ text "Submit a Project" ] ]
-            , div [] [ a [ href "https://github.com/dwayne/builtwithelm/tree/master/docs/learn-elm.md" ] [ text "Learn Elm" ] ]
-            , div [ class "builtwithelm-LastLink" ] [ a [ href "https://github.com/dwayne/builtwithelm#history" ] [ text "About" ] ]
+        , H.div [ HA.class "builtwithelm-Links" ]
+            [ H.div [] [ H.a [ HA.href "https://github.com/dwayne/builtwithelm#submissions" ] [ H.text "Submit a Project" ] ]
+            , H.div [] [ H.a [ HA.href "https://github.com/dwayne/builtwithelm/tree/master/docs/learn-elm.md" ] [ H.text "Learn Elm" ] ]
+            , H.div [ HA.class "builtwithelm-LastLink" ] [ H.a [ HA.href "https://github.com/dwayne/builtwithelm#history" ] [ H.text "About" ] ]
             ]
-        , div
-            [ class "builtwithelm-BuiltBy" ]
-            [ span [] [ text "Built by " ]
-            , a [ href "https://github.com/dwayne", target "_blank" ] [ text "Dwayne Crooks" ]
-            , span [] [ text " and " ]
-            , a [ href "https://github.com/dwayne/builtwithelm/graphs/contributors", target "_blank" ] [ text "the amazing Elm community." ]
+        , H.div
+            [ HA.class "builtwithelm-BuiltBy" ]
+            [ H.span [] [ H.text "Built by " ]
+            , H.a [ HA.href "https://github.com/dwayne", HA.target "_blank" ] [ H.text "Dwayne Crooks" ]
+            , H.span [] [ H.text " and " ]
+            , H.a [ HA.href "https://github.com/dwayne/builtwithelm/graphs/contributors", HA.target "_blank" ] [ H.text "the amazing Elm community." ]
             ]
         ]
 
 
-viewProjects : List Project -> List ( String, Html msg )
+viewProjects : List Project -> List ( String, H.Html msg )
 viewProjects projects =
     List.map (\p -> ( p.primaryUrl, viewProject p )) projects
 
 
-viewProject : Project -> Html msg
+viewProject : Project -> H.Html msg
 viewProject project =
-    div
-        [ class "builtwithelm-Project" ]
-        [ div
-            [ class "builtwithelm-ProjectHeader" ]
-            [ a
-                [ href project.primaryUrl
-                , target "_blank"
-                , class "builtwithelm-Link"
+    H.div
+        [ HA.class "builtwithelm-Project" ]
+        [ H.div
+            [ HA.class "builtwithelm-ProjectHeader" ]
+            [ H.a
+                [ HA.href project.primaryUrl
+                , HA.target "_blank"
+                , HA.class "builtwithelm-Link"
                 ]
-                [ h2 []
-                    [ text project.name ]
+                [ H.h2 []
+                    [ H.text project.name ]
                 ]
             , viewOpenSourceLink project
             ]
-        , p [] [ text project.description ]
-        , div
-            [ class "builtwithelm-ProjectScreenshotShell" ]
-            [ img
-                [ src project.previewImageUrl
-                , class "builtwithelm-ProjectImage"
+        , H.p [] [ H.text project.description ]
+        , H.div
+            [ HA.class "builtwithelm-ProjectScreenshotShell" ]
+            [ H.img
+                [ HA.src project.previewImageUrl
+                , HA.class "builtwithelm-ProjectImage"
                 ]
                 []
             ]
         ]
 
 
-viewOpenSourceLink : Project -> Html msg
+viewOpenSourceLink : Project -> H.Html msg
 viewOpenSourceLink project =
     case project.repositoryUrl of
         Just url ->
-            a
-                [ href url
-                , target "_blank"
-                , class "builtwithelm-Link"
+            H.a
+                [ HA.href url
+                , HA.target "_blank"
+                , HA.class "builtwithelm-Link"
                 ]
-                [ img
-                    [ src "images/github.svg"
-                    , class "builtwithelm-GithubLogo"
+                [ H.img
+                    [ HA.src "images/github.svg"
+                    , HA.class "builtwithelm-GithubLogo"
                     ]
                     []
                 ]
 
         Nothing ->
-            span [] []
+            H.span [] []
 
 
-viewPageSizeSelect : Int -> List Int -> Html Msg
+viewPageSizeSelect : Int -> List Int -> H.Html Msg
 viewPageSizeSelect current options =
     let
         toOption i =
-            option [ value <| String.fromInt i ] [ text <| String.fromInt i ]
+            H.option [ HA.value <| String.fromInt i ] [ H.text <| String.fromInt i ]
     in
-    div [ class "builtwithelm-Dropdown" ]
-        [ label [] [ text "Page size" ]
-        , select
-            [ value <| String.fromInt current
-            , E.onInput ChangedPageSize
+    H.div [ HA.class "builtwithelm-Dropdown" ]
+        [ H.label [] [ H.text "Page size" ]
+        , H.select
+            [ HA.value <| String.fromInt current
+            , HE.onInput ChangedPageSize
             ]
             (List.map toOption options)
         ]
 
 
-viewPageButton : Msg -> Bool -> String -> Html Msg
+viewPageButton : Msg -> Bool -> String -> H.Html Msg
 viewPageButton onPress isDisabled label =
     if isDisabled then
-        button
-            [ disabled True
-            , class "builtwithelm-Button"
+        H.button
+            [ HA.disabled True
+            , HA.class "builtwithelm-Button"
             ]
-            [ text label ]
+            [ H.text label ]
 
     else
-        button
-            [ E.onClick onPress
-            , class "builtwithelm-Button"
+        H.button
+            [ HE.onClick onPress
+            , HA.class "builtwithelm-Button"
             ]
-            [ text label ]
+            [ H.text label ]
