@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+elm-format              \
+  "$project/review/src" \
+  "$project/src"        \
+  "${@:---yes}"

@@ -1,19 +1,14 @@
 #!/usr/bin/env bash
 
+# Create the build directory
+
 mkdir -p "$build"
+
+# Copy everything in the public directory over to the build directory
 
 cp -r "$project"/public/* "$build"
 
-files_to_format="$project/src"
-elm-format "$files_to_format" --validate || elm-format "$files_to_format" --yes
-
-function review {
-  tmp=$(mktemp)
-  npx elm-review > "$tmp" || (cat "$tmp" && exit 1)
-}
-review
-
-# Build JS
+# Compile to JS
 
 main="$project/src/Main.elm"
 tmp=$(mktemp -d)
