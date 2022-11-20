@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+# Usage: build [-p]
+
+# Get the command-line options
+
+optimize=0
+
+while getopts ':p' opt; do
+  case $opt in
+     p ) optimize=1 ;;
+    \? ) ;;
+  esac
+done
+
 # Create the build directory
 
 mkdir -p "$build"
@@ -10,19 +23,8 @@ cp -r "$project"/public/* "$build"
 
 # Compile to JS
 
-main="$project/src/Main.elm"
-tmp=$(mktemp -d)
-js="$tmp/app.js"
-
-if [[ -v optimize ]]; then
-  elm make "$main" --optimize --output="$js"
-
-  min="$tmp/app.min.js"
-
-  terser "$js" --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters,keep_fargs=false,unsafe_comps,unsafe' | terser --mangle --output "$min"
-  mv "$min" "$js"
+if [ $optimize = 1 ]; then
+  build-js -p
 else
-  elm make "$main" --debug --output="$js"
+  build-js
 fi
-
-cp "$js" "$build/app.js"

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Usage: build-js [-p]
+
+# Get the command-line options
+
+optimize=0
+
+while getopts ':p' opt; do
+  case $opt in
+     p ) optimize=1 ;;
+    \? ) ;;
+  esac
+done
+
+# Create the build directory
+
+mkdir -p "$build"
+
+# Compile to JS
+
+main="$project/src/Main.elm"
+tmp=$(mktemp -d)
+js="$tmp/app.js"
+
+if [ $optimize = 1 ]; then
+  elm make "$main" --optimize --output="$js"
+
+  min="${js%.js}.min.js"
+  npx terser "$js" --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters,keep_fargs=false,unsafe_comps,unsafe' | npx terser --mangle --output "$min"
+  mv "$min" "$js"
+else
+  elm make "$main" --debug --output="$js"
+fi
+
+cp "$js" "$build/app.js"
