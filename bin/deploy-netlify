@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function deploy {
+deploy () {
   local branch="netlify"
 
   if git rev-parse --verify "$branch^{commit}" &> /dev/null; then
@@ -30,11 +30,9 @@ function deploy {
   fi
 }
 
-function error {
+error () {
   printf "Error: %s\n" "$@" >&2
   exit 1
 }
 
-optimize=1
-
-clean && build && deploy
+clean && build -p && deploy
