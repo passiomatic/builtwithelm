@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+check_format () {
+  format --validate &>/dev/null || format --validate
+}
+
+check_review () {
+  review &>/dev/null || review
+}
+
+check_format && check_review
