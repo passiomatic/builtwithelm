@@ -1,3 +1,15 @@
 #!/usr/bin/env bash
 
-rm -rf "$build" "$project/elm-stuff"
+#
+# Usage: clean
+#
+
+set -euo pipefail
+
+cd "${project:?}" && \
+  rm -rf             \
+    .build           \
+    elm-stuff        \
+    node_modules
+
+echo "Please restart your Nix development shell."

@@ -1,11 +1,38 @@
 #!/usr/bin/env bash
 
-check_format () {
-  format --validate &>/dev/null || format --validate
+#
+# Usage: check
+#
+
+set -euo pipefail
+
+project="${project:?}"
+
+fail () {
+  echo "$1" >&2
+  exit 1
 }
 
-check_review () {
-  review &>/dev/null || review
-}
+# Check scripts
 
-check_format && check_review
+if ! check-scripts &>/dev/null; then
+  check-scripts
+fi
+
+# Format
+
+if ! format --validate &>/dev/null; then
+  fail "Your code needs to be formatted. Run: format"
+fi
+
+# Build
+
+if ! build &>/dev/null; then
+  build
+fi
+
+# Review
+
+if ! review &>/dev/null; then
+  review
+fi

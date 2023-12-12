@@ -108,7 +108,7 @@ h2 {
 }
 
 .builtwithelm-ProjectScreenshotShell {
-  background-image: url(images/screenshot_shell.svg);
+  background-image: url(./images/screenshot_shell.svg);
   background-size: contain;
   max-width: 1040px;
   max-height: 850px;

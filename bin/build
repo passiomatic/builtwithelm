@@ -1,30 +1,80 @@
 #!/usr/bin/env bash
 
-# Usage: build [-p]
+#
+# USAGE: [root=path] [optimize_js=0*|1|2|3] build
+#
 
-# Get the command-line options
+set -euo pipefail
 
-optimize=0
+root="${root:-}"
+optimize_js="${optimize_js:-0}"
 
-while getopts ':p' opt; do
-  case $opt in
-     p ) optimize=1 ;;
-    \? ) ;;
+src="${project:?}"
+out="${build:?}/builtwithelm"
+web_root="$out/${root}"
+
+clean () {
+  rm -rf "$out"
+}
+
+prepare_web_root () {
+  mkdir -p "$web_root"
+}
+
+build_html () {
+  cp "$src"/public/index.html "$web_root"
+}
+
+build_css () {
+  cp "$src"/public/index.css "$web_root"
+}
+
+build_images () {
+  cp -r "$src/public/images" "$web_root"
+}
+
+build_data () {
+  cp -r "$src/public/data" "$web_root"
+}
+
+build_js () {
+  case "${optimize_js}" in
+    1|2|3)
+      func=build_js_optimize_"$optimize_js"
+      ;;
+    *)
+      func=build_js_debug
+      ;;
   esac
-done
 
-# Create the build directory
+  "$func" "$src/src/Main.elm" "$web_root/app.js"
+}
 
-mkdir -p "$build"
+build_js_debug () {
+  elm make "$1" --debug --output "$2"
+}
 
-# Copy everything in the public directory over to the build directory
+build_js_optimize_1 () {
+  elm make "$1" --optimize --output "$2"
+  minify "$2"
+}
 
-cp -r "$project"/public/* "$build"
+build_js_optimize_2 () {
+  elm-optimize-level-2 "$1" --output "$2"
+  minify "$2"
+}
 
-# Compile to JS
+build_js_optimize_3 () {
+  elm-optimize-level-2 "$1" --optimize-speed --output "$2"
+  minify "$2"
+}
 
-if [ $optimize = 1 ]; then
-  build-js -p
-else
-  build-js
-fi
+minify () {
+  js="$1"
+  min="${js%.js}.min.js"
+
+  terser "$js" --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters,keep_fargs=false,unsafe_comps,unsafe' | terser --mangle --output "$min"
+  mv "$min" "$js"
+}
+
+cd "$src" && clean && prepare_web_root && build_html && build_css && build_images && build_data && build_js

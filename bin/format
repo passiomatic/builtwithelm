@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-elm-format              \
-  "$project/review/src" \
-  "$project/src"        \
-  "${@:---yes}"
+#
+# Usage: format [args-for-elm-format]
+#
+
+set -euo pipefail
+
+cd "${project:?}" && \
+  elm-format         \
+    review/src       \
+    src              \
+    "${@:---yes}"
