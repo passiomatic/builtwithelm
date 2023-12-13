@@ -43,7 +43,7 @@ fi
 # BUILD
 
 
-optimize_html=1 optimize_js=2 build
+optimize_html=1 optimize_css=1 optimize_js=2 build
 
 
 # PREPARE DEPLOY DIRECTORY

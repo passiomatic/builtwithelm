@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
 #
-# USAGE: [root=path] [optimize_html=0*|1] [optimize_js=0*|1|2|3] build
+# USAGE: [root=path] [optimize_html=0*|1] [optimize_css=0*|1] [optimize_js=0*|1|2|3] build
 #
 
 set -euo pipefail
 
 root="${root:-}"
 optimize_html="${optimize_html:-0}"
+optimize_css="${optimize_css:-0}"
 optimize_js="${optimize_js:-0}"
 
 src="${project:?}"
@@ -37,7 +38,11 @@ build_html () {
 }
 
 build_css () {
-  cp "$src"/public/index.css "$web_root"
+  if [[ "$optimize_css" = 0 ]]; then
+    cp "$src"/public/index.css "$web_root"
+  else
+    npx postcss --config "$src/config" "$src/public/index.css" -o "$web_root/index.css"
+  fi
 }
 
 build_images () {
