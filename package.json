@@ -1,6 +1,7 @@
 {
   "private": true,
   "devDependencies": {
-    "elm-review": "^2.10.3"
+    "elm-review": "^2.10.3",
+    "html-minifier": "^4.0.0"
   }
 }

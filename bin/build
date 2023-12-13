@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 
 #
-# USAGE: [root=path] [optimize_js=0*|1|2|3] build
+# USAGE: [root=path] [optimize_html=0*|1] [optimize_js=0*|1|2|3] build
 #
 
 set -euo pipefail
 
 root="${root:-}"
+optimize_html="${optimize_html:-0}"
 optimize_js="${optimize_js:-0}"
 
 src="${project:?}"
 out="${build:?}/builtwithelm"
-web_root="$out/${root}"
+web_root="$out/$root"
 
 clean () {
   rm -rf "$out"
@@ -22,7 +23,17 @@ prepare_web_root () {
 }
 
 build_html () {
-  cp "$src"/public/index.html "$web_root"
+  if [[ "$optimize_html" = 0 ]]; then
+    cp "$src"/public/*.html "$web_root"
+  else
+    npx html-minifier           \
+      --collapse-whitespace     \
+      --minify-js               \
+      --remove-tag-whitespace   \
+      --file-ext html           \
+      --input-dir "$src/public" \
+      --output-dir "$web_root"
+  fi
 }
 
 build_css () {
