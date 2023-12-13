@@ -20,6 +20,7 @@
             elm-format
             elm-json
             elm-optimize-level-2
+            elm-review
             pkgs.caddy
             pkgs.nodejs_20
             pkgs.nodePackages.terser

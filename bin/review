@@ -7,7 +7,7 @@
 set -euo pipefail
 
 cd "${project:?}" && \
-  npx elm-review     \
+  elm-review         \
     review/src       \
     src              \
     "$@"
