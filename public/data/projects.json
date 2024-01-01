@@ -1,5 +1,12 @@
 [
   {
+    "name": "Wedding Website",
+    "description": "A simple static micro-website adaptable for weddings.",
+    "primaryUrl": "https://heyakyra.gitlab.io/wedding-website-elm",
+    "previewImageUrl": "data/images/wedding-website.png",
+    "repositoryUrl": "https://gitlab.com/heyakyra/wedding-website-elm"
+  },
+  {
     "name": "Elbum",
     "description": "A web photo album generator in Elm and Haskell.",
     "primaryUrl": "https://jerith666.github.io/elbum-demo",
