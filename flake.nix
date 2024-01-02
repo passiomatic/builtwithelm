@@ -22,8 +22,10 @@
             elm-optimize-level-2
             elm-review
             pkgs.caddy
+            pkgs.jpegoptim
             pkgs.nodejs_20
             pkgs.nodePackages.terser
+            pkgs.optipng
             pkgs.shellcheck
           ];
 
@@ -33,7 +35,7 @@
             export build="$project/.build"
             export PATH="$project/bin:$PATH"
 
-            npm install --loglevel silent
+            npm clean-install --loglevel silent
             '';
         };
       }
