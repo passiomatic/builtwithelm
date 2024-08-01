@@ -11,5 +11,3 @@ cd "${project:?}" && \
     .build           \
     elm-stuff        \
     node_modules
-
-echo "Please restart your Nix development shell."

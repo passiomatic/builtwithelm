@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# USAGE: optimize-images
+# Usage: optimize-images
 #
 
 set -euo pipefail

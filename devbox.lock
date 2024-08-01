@@ -121,6 +121,26 @@
         }
       }
     },
+    "html-minifier@latest": {
+      "last_modified": "2024-07-07T07:43:47Z",
+      "resolved": "github:NixOS/nixpkgs/b60793b86201040d9dee019a05089a9150d08b5b#html-minifier",
+      "source": "devbox-search",
+      "version": "4.0.0",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/l2r302q36s9pzrdnis4xy8m51fwqvm76-html-minifier-4.0.0"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/vvrf93g8dx1kniwm9d13lsjxh2i30bag-html-minifier-4.0.0"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/2mzqcdcyprp743djag4ijpyjqfs0azyl-html-minifier-4.0.0"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/gza0433pi5gsqy5kykdywwzmp0m92a2x-html-minifier-4.0.0"
+        }
+      }
+    },
     "jpegoptim@latest": {
       "last_modified": "2024-07-07T07:43:47Z",
       "resolved": "github:NixOS/nixpkgs/b60793b86201040d9dee019a05089a9150d08b5b#jpegoptim",

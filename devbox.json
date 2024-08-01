@@ -9,6 +9,7 @@
     "elmPackages.elm-json": "latest",
     "elmPackages.elm-optimize-level-2": "latest",
     "elmPackages.elm-review": "latest",
+    "html-minifier": "latest",
     "jpegoptim": "latest",
     "nodejs": "20",
     "optipng": "latest",

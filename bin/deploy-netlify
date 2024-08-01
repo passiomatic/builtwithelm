@@ -23,10 +23,10 @@ if [[ "$current_branch" != master ]]; then
   #
   # NOTE:
   #
-  # Usually we want to deploy from the master branch. Only in
-  # rare occassions we'd deploy from another branch. So deploying
+  # Usually you'd want to deploy from the master branch. On rare
+  # occassions you'd deploy from another branch. So deploying
   # from a different branch could be a mistake and that's why we
-  # verify with the user if they want to continue with the deploy.
+  # verify if you want to continue with the deploy.
   #
   read -r -n 1 -t 30 -p "Are you sure want to continue? (y/N) "
   case $REPLY in
@@ -58,25 +58,32 @@ echo "Prepared the deploy directory: $out"
 
 branch_name="netlify"
 
-[[ $simulate = 0 ]] && git worktree add "$out" "$branch_name"
+if [[ "$simulate" = 0 ]]; then
+  git worktree add "$out" "$branch_name"
+  git -C "$out" pull
+fi
 
 
 # DEPLOY
 
 
-src="${build:?}/builtwithelm"
+src="${build:?}/production"
+hash="$(git log -n 1 --format='%h' "$current_branch")"
+message="Site updated to commit $hash from the $current_branch branch"
 
 cp -r "$src"/* "$out"
 cp "${project:?}/config/${branch_name}"/* "$out"
 
-hash="$(git log -n 1 --format='%h' "$current_branch")"
-message="Site updated to commit $hash from the $current_branch branch"
-
 if [[ "$simulate" != 0 ]]; then
   echo "$message"
 else
-  git -C "$out" add .
-  if git -C "$out" commit -m "$message"; then
+  git -C "$out" add -N .
+
+  if git -C "$out" diff --quiet; then
+    echo "No changes detected."
+  else
+    git -C "$out" add .
+    git -C "$out" commit -m "$message"
     git -C "$out" push -u origin HEAD
   fi
 fi

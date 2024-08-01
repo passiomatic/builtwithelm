@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+#
+# Usage: serve-production
+#
+
+set -euo pipefail
+
+serve 8001 production

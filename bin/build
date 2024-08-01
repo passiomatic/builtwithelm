@@ -1,60 +1,69 @@
 #!/usr/bin/env bash
 
 #
-# USAGE: [root=path] [optimize_html=0*|1] [optimize_css=0*|1] [optimize_js=0*|1|2|3] build
+# Usage: [optimize_html=0*|1] [optimize_css=0*|1] [optimize_js=0*|1|2|3] [compress=0*|1] build [output_dir]
 #
 
 set -euo pipefail
 
-root="${root:-}"
 optimize_html="${optimize_html:-0}"
 optimize_css="${optimize_css:-0}"
 optimize_js="${optimize_js:-0}"
+compress="${compress:-0}"
+
+output_dir="${1:-development}"
 
 src="${project:?}"
-out="${build:?}/builtwithelm"
-web_root="$out/$root"
+out="${build:?}/$output_dir"
 
 clean () {
   rm -rf "$out"
 }
 
-prepare_web_root () {
-  mkdir -p "$web_root"
+prepare () {
+  mkdir -p "$out"
 }
 
 build_html () {
   if [[ "$optimize_html" = 0 ]]; then
-    cp "$src"/public/*.html "$web_root"
+    cp "$src/public/"*.html "$out"
   else
-    npx html-minifier           \
-      --collapse-whitespace     \
-      --minify-js               \
-      --remove-tag-whitespace   \
-      --file-ext html           \
-      --input-dir "$src/public" \
-      --output-dir "$web_root"
+    html-minifier                         \
+      --collapse-boolean-attributes       \
+      --collapse-inline-tag-whitespace    \
+      --collapse-whitespace               \
+      --decode-entities                   \
+      --minify-js                         \
+      --remove-comments                   \
+      --remove-empty-attributes           \
+      --remove-redundant-attributes       \
+      --remove-script-type-attributes     \
+      --remove-style-link-type-attributes \
+      --remove-tag-whitespace             \
+      --file-ext html                     \
+      --input-dir "$src/public"           \
+      --output-dir "$out"
   fi
 }
 
 build_css () {
   if [[ "$optimize_css" = 0 ]]; then
-    cp "$src"/public/index.css "$web_root"
+    cp "$src/public/index.css" "$out"
   else
-    npx postcss --config "$src/config" "$src/public/index.css" -o "$web_root/index.css"
+    npx postcss --config "$src/config" "$src/public/index.css" -o "$out/index.css"
   fi
 }
 
 build_images () {
-  cp -r "$src/public/images" "$web_root"
+  cp -r "$src/public/images" "$out"
 }
 
 build_data () {
-  cp -r "$src/public/data" "$web_root"
+  cp -r "$src/public/data" "$out"
 }
 
 build_js () {
-  case "${optimize_js}" in
+  case "$optimize_js" in
     1|2|3)
       func=build_js_optimize_"$optimize_js"
       ;;
@@ -63,7 +72,7 @@ build_js () {
       ;;
   esac
 
-  "$func" "$src/src/Main.elm" "$web_root/app.js"
+  "$func" "$src/src/Main.elm" "$out/app.js"
 }
 
 build_js_debug () {
@@ -93,4 +102,4 @@ minify () {
   mv "$min" "$js"
 }
 
-cd "$src" && clean && prepare_web_root && build_html && build_css && build_images && build_data && build_js
+clean && prepare && build_html && build_css && build_images && build_data && build_js

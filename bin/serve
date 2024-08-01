@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
 #
-# Usage: serve [8000]
+# Usage: serve [port] [dir]
 #
 
 set -euo pipefail
 
 port="${1:-8000}"
+dir="${2:-development}"
 
-caddy file-server --browse --listen :"$port" --root "${build:?}/builtwithelm"
+root="${build:?}/$dir"
+
+caddy file-server --browse --listen :"$port" --root "$root"
