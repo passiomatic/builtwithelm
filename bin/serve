@@ -11,4 +11,4 @@ dir="${2:-development}"
 
 root="${build:?}/$dir"
 
-caddy file-server --browse --listen :"$port" --root "$root"
+port="$port" root="$root" caddy run --config "${project:?}/Caddyfile"

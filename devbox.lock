@@ -1,6 +1,26 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "brotli@latest": {
+      "last_modified": "2024-07-28T04:39:20Z",
+      "resolved": "github:NixOS/nixpkgs/038fb464fcfa79b4f08131b07f2d8c9a6bcc4160#brotli",
+      "source": "devbox-search",
+      "version": "1.1.0",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/glcp557knja9jmrdr1idyjrdfvrj96ps-brotli-1.1.0"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/dab344a6cv39n0wcklk9sdmpsvy8shlc-brotli-1.1.0"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/3d20qllbajl9yfv8i06bvf1lwj6hmqqd-brotli-1.1.0"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/w3p2vhjryqblz16h125g6sckjglc43ny-brotli-1.1.0"
+        }
+      }
+    },
     "caddy@latest": {
       "last_modified": "2024-07-20T09:11:00Z",
       "resolved": "github:NixOS/nixpkgs/6e14bbce7bea6c4efd7adfa88a40dac750d80100#caddy",
@@ -238,6 +258,26 @@
         },
         "x86_64-linux": {
           "store_path": "/nix/store/476gmszh6lb69z3gn9x1h76gxv95pd5a-terser-5.31.1"
+        }
+      }
+    },
+    "zopfli@latest": {
+      "last_modified": "2024-07-13T21:28:58Z",
+      "resolved": "github:NixOS/nixpkgs/d55afb5fc2e24e0852c9da179fbe2a74a2687697#zopfli",
+      "source": "devbox-search",
+      "version": "1.0.3",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/l1dvjlklmdv5g1nrkima3bd99b26kdpb-zopfli-1.0.3"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/gn7i8ixi6pc79nh5anbvbdwl5vqxvwnl-zopfli-1.0.3"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/sczgf9xsn9ig10mqk2w4fi3wxz5sg2zl-zopfli-1.0.3"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/wcvxsszwxiscczwl1xkamjqc4qmw2fdf-zopfli-1.0.3"
         }
       }
     }
