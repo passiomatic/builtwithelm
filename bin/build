@@ -48,9 +48,9 @@ build_html () {
 
 build_css () {
   if [[ "$optimize_css" = 0 ]]; then
-    cp "$src/public/index.css" "$out"
+    sass --embed-sources "$src/sass/index.scss" "$out/index.css"
   else
-    npx postcss --config "$src/config" "$src/public/index.css" -o "$out/index.css"
+    sass --style=compressed --no-source-map "$src/sass/index.scss" "$out/index.css"
   fi
 }
 

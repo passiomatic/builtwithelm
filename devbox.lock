@@ -41,6 +41,26 @@
         }
       }
     },
+    "dart-sass@latest": {
+      "last_modified": "2024-07-07T07:43:47Z",
+      "resolved": "github:NixOS/nixpkgs/b60793b86201040d9dee019a05089a9150d08b5b#dart-sass",
+      "source": "devbox-search",
+      "version": "1.77.6",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/m7cwavg9p07a2nfg1zqfnvb4bc2jlxy5-dart-sass-1.77.6"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/wmkqazmxfiywga58z7mk7s0icl38pmxk-dart-sass-1.77.6"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/4kzb5vg2hw7ywcl01pxnqlsck1677jzi-dart-sass-1.77.6"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/jrsdqbk48q0cvmr0sg4qvc4qjybv1r30-dart-sass-1.77.6"
+        }
+      }
+    },
     "elmPackages.elm-format@latest": {
       "last_modified": "2024-07-15T04:07:31Z",
       "resolved": "github:NixOS/nixpkgs/a14c5d651cee9ed70f9cd9e83f323f1e531002db#elmPackages.elm-format",

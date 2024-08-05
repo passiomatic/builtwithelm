@@ -5,6 +5,7 @@
         "version": "latest",
         "disable_plugin": true
       },
+    "dart-sass": "latest",
     "elmPackages.elm": "latest",
     "elmPackages.elm-format": "latest",
     "elmPackages.elm-json": "latest",
@@ -12,7 +13,6 @@
     "elmPackages.elm-review": "latest",
     "html-minifier": "latest",
     "jpegoptim": "latest",
-    "nodejs": "20",
     "optipng": "latest",
     "shellcheck": "latest",
     "terser": "latest",
@@ -20,12 +20,7 @@
   },
   "env": {
     "project": "$PWD",
-      "build": "$PWD/.build",
-      "PATH": "$PWD/bin:$PATH"
-  },
-  "shell": {
-    "init_hook": [
-      "npm clean-install --loglevel silent"
-    ]
+    "build": "$PWD/.build",
+    "PATH": "$PWD/bin:$PATH"
   }
 }

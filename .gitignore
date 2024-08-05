@@ -1,4 +1,3 @@
 .build/
 .devbox/
 elm-stuff/
-node_modules/
