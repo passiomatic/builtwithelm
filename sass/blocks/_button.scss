@@ -1,0 +1,22 @@
+@use "../colors";
+@use "../fonts";
+
+/*button*/.button {
+  border: 2px solid colors.$gray2;
+  border-radius: 5px;
+
+  padding: 4px;
+
+  font-size: 1.5rem;
+  line-height: 1;
+
+  color: colors.$blue;
+  background-color: colors.$white;
+
+  cursor: pointer;
+}
+
+.button:disabled {
+  color: colors.$gray2;
+  cursor: not-allowed;
+}

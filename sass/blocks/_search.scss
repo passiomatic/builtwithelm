@@ -1,0 +1,8 @@
+@use "../colors";
+
+.search {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid colors.$gray1;
+  border-radius: 6px;
+}

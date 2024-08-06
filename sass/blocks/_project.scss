@@ -1,0 +1,37 @@
+.project__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.project__title {
+  margin: 0;
+  margin-right: auto;
+
+  white-space: nowrap;
+}
+
+.project__github-logo {
+  width: 2rem;
+}
+
+.project__screenshot {
+  display: flex;
+
+  background-image: url(/images/screenshot-shell.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  padding: 1.875%;
+  padding-top: 3.25%;
+
+  & > img {
+    width: 100%;
+
+    // Useful for debugging purposes
+    //
+    // outline: 1px solid pink;
+    // opacity: 0.5;
+  }
+}

@@ -1,0 +1,21 @@
+@use "fonts";
+
+//
+// Universal box sizing, see https://css-tricks.com/box-sizing/#aa-universal-box-sizing.
+//
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.body, .prototype {
+  font-family: fonts.$source-sans-pro;
+  font-size: 100%;
+
+  & a {
+    color: inherit;
+  }
+}
+
+.body {
+  margin: 0;
+}

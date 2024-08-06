@@ -1,0 +1,9 @@
+@use "../fonts";
+
+.setting {
+  font-family: fonts.$helvetica;
+
+  & > label {
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,29 @@
+/*a*/.heading__link {
+  text-decoration: none;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.heading__logo {
+  width: 80px;
+}
+
+.heading__title {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.heading__prefix {
+  color: #999;
+}
+
+// .heading__logo {
+//   width: 112px;
+// }
+
+// .heading__title {
+//   font-size: 2rem;
+// }
