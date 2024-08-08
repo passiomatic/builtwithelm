@@ -1,8 +1,8 @@
 @use "../colors";
 
-.search {
+.search__input {
   width: 100%;
   padding: 4px;
-  border: 1px solid colors.$gray1;
+  border: 2px solid colors.$gray1;
   border-radius: 6px;
 }

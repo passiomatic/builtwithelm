@@ -1,0 +1,60 @@
+.builtwithelm {
+  padding: 20px;
+}
+
+.builtwithelm__sidebar {
+  margin-bottom: 40px;
+
+  .heading {
+    margin-bottom: 15px;
+  }
+
+  .builtwithelm__footer {
+    display: none;
+  }
+}
+
+.builtwithelm__projects {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.builtwithelm__footer {
+  margin-top: 40px;
+
+  .links {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 770px) {
+  .builtwithelm {
+    display: flex;
+    gap: 40px;
+  }
+
+  .builtwithelm__sidebar {
+    margin-bottom: 0;
+    min-width: 280px;
+
+    .builtwithelm__footer {
+      display: block;
+    }
+  }
+
+  .builtwithelm__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .builtwithelm__footer {
+      display: none;
+    }
+  }
+
+  .builtwithelm__projects {
+    max-width: 920px;
+  }
+}

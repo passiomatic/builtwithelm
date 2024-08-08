@@ -1,0 +1,15 @@
+.pager {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  flex-wrap: wrap-reverse;
+}
+
+.pager__setting {
+  margin-right: auto;
+}
+
+.pager__buttons {
+  display: flex;
+  gap: 5px;
+}
