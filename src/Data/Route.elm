@@ -1,8 +1,9 @@
-module Route exposing (HomeParams, Route(..), fromUrl, href)
+module Data.Route exposing (HomeParams, Route(..), fromUrl, toString)
 
-import Url
-import Url.Builder
-import Url.Parser exposing (Parser, map, oneOf, parse, query)
+import Lib.Maybe as Maybe
+import Url exposing (Url)
+import Url.Builder as UB
+import Url.Parser as UP
 import Url.Parser.Query as Query
 
 
@@ -16,33 +17,32 @@ type alias HomeParams =
     }
 
 
-fromUrl : Url.Url -> Maybe Route
-fromUrl url =
-    parse parser url
+fromUrl : Url -> Maybe Route
+fromUrl =
+    UP.parse routeParser
 
 
-parser : Parser (Route -> a) a
-parser =
-    oneOf
-        [ map Home (query homeParamsParser)
+routeParser : UP.Parser (Route -> a) a
+routeParser =
+    UP.oneOf
+        [ UP.map Home (UP.query homeParamsParser)
         ]
 
 
 homeParamsParser : Query.Parser HomeParams
 homeParamsParser =
-    Query.map2
-        HomeParams
+    Query.map2 HomeParams
         (Query.string "q")
         (Query.int "page")
 
 
-href : Route -> String
-href route =
+toString : Route -> String
+toString route =
     case route of
-        Home homeParams ->
+        Home { query, pageNumber } ->
             let
                 toQ =
-                    homeParams.query
+                    query
                         |> Maybe.andThen
                             (\value ->
                                 if String.isEmpty value then
@@ -51,10 +51,10 @@ href route =
                                 else
                                     Just value
                             )
-                        |> Maybe.map (Url.Builder.string "q")
+                        |> Maybe.map (UB.string "q")
 
                 toPage =
-                    homeParams.pageNumber
+                    pageNumber
                         |> Maybe.andThen
                             (\value ->
                                 if value <= 1 then
@@ -63,24 +63,9 @@ href route =
                                 else
                                     Just value
                             )
-                        |> Maybe.map (Url.Builder.int "page")
+                        |> Maybe.map (UB.int "page")
 
                 queryParams =
-                    compact [ toQ, toPage ]
+                    Maybe.catMaybes [ toQ, toPage ]
             in
-            Url.Builder.absolute [] queryParams
-
-
-compact : List (Maybe a) -> List a
-compact list =
-    case list of
-        [] ->
-            []
-
-        x :: xs ->
-            case x of
-                Nothing ->
-                    compact xs
-
-                Just a ->
-                    a :: compact xs
+            UB.absolute [] queryParams

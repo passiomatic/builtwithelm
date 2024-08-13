@@ -1,8 +1,8 @@
 module Api exposing (fetchProjects)
 
+import Data.Project exposing (Project)
 import Http
-import Json.Decode as D exposing (Decoder)
-import Project exposing (Project)
+import Json.Decode as JD
 
 
 fetchProjects : (Result Http.Error (List Project) -> msg) -> Cmd msg
@@ -13,16 +13,16 @@ fetchProjects toMsg =
         }
 
 
-projectsDecoder : Decoder (List Project)
+projectsDecoder : JD.Decoder (List Project)
 projectsDecoder =
-    D.list projectDecoder
+    JD.list projectDecoder
 
 
-projectDecoder : Decoder Project
+projectDecoder : JD.Decoder Project
 projectDecoder =
-    D.map5 Project
-        (D.field "name" D.string)
-        (D.field "description" D.string)
-        (D.field "primaryUrl" D.string)
-        (D.field "previewImageUrl" D.string)
-        (D.field "repositoryUrl" (D.maybe D.string))
+    JD.map5 Project
+        (JD.field "name" JD.string)
+        (JD.field "description" JD.string)
+        (JD.field "primaryUrl" JD.string)
+        (JD.field "previewImageUrl" JD.string)
+        (JD.field "repositoryUrl" (JD.nullable JD.string))

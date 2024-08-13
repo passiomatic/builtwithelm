@@ -1,33 +1,33 @@
-module RemoteData exposing (RemoteData(..), map, withDefault)
+module Lib.RemoteData exposing (RemoteData(..), map, withDefault)
 
 
 type RemoteData a
     = Loading
-    | Failure
     | Success a
+    | Failure
 
 
 withDefault : a -> RemoteData a -> a
-withDefault default d =
-    case d of
+withDefault default remoteData =
+    case remoteData of
         Loading ->
-            default
-
-        Failure ->
             default
 
         Success a ->
             a
 
+        Failure ->
+            default
+
 
 map : (a -> b) -> RemoteData a -> RemoteData b
-map f d =
-    case d of
+map f remoteData =
+    case remoteData of
         Loading ->
             Loading
 
-        Failure ->
-            Failure
-
         Success a ->
             Success (f a)
+
+        Failure ->
+            Failure

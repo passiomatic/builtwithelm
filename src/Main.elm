@@ -1,16 +1,17 @@
 module Main exposing (main)
 
-import Browser
-import Browser.Navigation as Nav
-import Html
-import Route
-import Screen.Home
+import Browser as B
+import Browser.Navigation as BN
+import Data.Route as Route
+import Html as H
+import Page.Home
+import Page.NotFound
 import Url exposing (Url)
 
 
 main : Program () Model Msg
 main =
-    Browser.application
+    B.application
         { init = init
         , view = view
         , update = update
@@ -26,33 +27,43 @@ main =
 
 type alias Model =
     { url : Url
-    , key : Nav.Key
-    , screen : Screen
+    , key : BN.Key
+    , page : Page
     }
 
 
-type Screen
-    = Home Screen.Home.Model
+type Page
+    = Home Page.Home.Model
     | NotFound
 
 
-init : flags -> Url -> Nav.Key -> ( Model, Cmd Msg )
+init : () -> Url -> BN.Key -> ( Model, Cmd Msg )
 init _ url key =
-    fromUrl url key
-        |> Tuple.mapFirst (Model url key)
+    let
+        ( page, pageCmd ) =
+            urlToPage url key
+    in
+    ( { url = url
+      , key = key
+      , page = page
+      }
+    , pageCmd
+    )
 
 
-fromUrl : Url -> Nav.Key -> ( Screen, Cmd Msg )
-fromUrl url key =
+urlToPage : Url -> BN.Key -> ( Page, Cmd Msg )
+urlToPage url key =
     case Route.fromUrl url of
         Just (Route.Home params) ->
-            Screen.Home.init key params
-                |> Tuple.mapBoth Home (Cmd.map HomeMsg)
+            Page.Home.init
+                { key = key
+                , params = params
+                , onChange = ChangedHomePage
+                }
+                |> Tuple.mapFirst Home
 
         Nothing ->
-            ( NotFound
-            , Cmd.none
-            )
+            ( NotFound, Cmd.none )
 
 
 
@@ -60,9 +71,9 @@ fromUrl url key =
 
 
 type Msg
-    = ClickedLink Browser.UrlRequest
+    = ClickedLink B.UrlRequest
     | ChangedUrl Url
-    | HomeMsg Screen.Home.Msg
+    | ChangedHomePage Page.Home.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -70,55 +81,60 @@ update msg model =
     case msg of
         ClickedLink urlRequest ->
             case urlRequest of
-                Browser.Internal url ->
+                B.Internal url ->
                     ( model
-                    , Nav.pushUrl model.key (Url.toString url)
+                    , BN.pushUrl model.key (Url.toString url)
                     )
 
-                Browser.External href ->
+                B.External url ->
                     ( model
-                    , Nav.load href
+                    , BN.load url
                     )
 
         ChangedUrl url ->
             case Route.fromUrl url of
                 Just (Route.Home params) ->
-                    case model.screen of
-                        Home homeModel ->
+                    case model.page of
+                        Home pageModel ->
                             let
-                                screen =
-                                    homeModel
-                                        |> Screen.Home.withParams params
+                                page =
+                                    pageModel
+                                        |> Page.Home.withParams params
                                         |> Home
                             in
-                            ( { model | url = url, screen = screen }
+                            ( { model | url = url, page = page }
                             , Cmd.none
                             )
 
                         _ ->
                             let
-                                ( screen, _ ) =
-                                    Screen.Home.init model.key params
-                                        |> Tuple.mapBoth Home (Cmd.map HomeMsg)
+                                ( page, pageCmd ) =
+                                    Page.Home.init
+                                        { key = model.key
+                                        , params = params
+                                        , onChange = ChangedHomePage
+                                        }
+                                        |> Tuple.mapFirst Home
                             in
-                            ( { model | url = url, screen = screen }
-                            , Cmd.none
+                            ( { model | url = url, page = page }
+                            , pageCmd
                             )
 
                 Nothing ->
-                    ( { model | url = url, screen = NotFound }
+                    ( { model | url = url, page = NotFound }
                     , Cmd.none
                     )
 
-        HomeMsg homeMsg ->
-            case model.screen of
-                Home homeModel ->
+        ChangedHomePage pageMsg ->
+            case model.page of
+                Home pageModel ->
                     let
-                        ( screen, cmd ) =
-                            Screen.Home.update homeMsg homeModel
-                                |> Tuple.mapBoth Home (Cmd.map HomeMsg)
+                        ( newPageModel, pageCmd ) =
+                            Page.Home.update pageMsg pageModel
                     in
-                    ( { model | screen = screen }, cmd )
+                    ( { model | page = Home newPageModel }
+                    , pageCmd
+                    )
 
                 _ ->
                     ( model, Cmd.none )
@@ -128,15 +144,15 @@ update msg model =
 -- VIEW
 
 
-view : Model -> Browser.Document Msg
+view : Model -> B.Document Msg
 view model =
     { title = "Built with Elm"
     , body =
-        case model.screen of
-            Home homeModel ->
-                Screen.Home.view homeModel
-                    |> List.map (Html.map HomeMsg)
+        [ case model.page of
+            Home pageModel ->
+                Page.Home.view pageModel
 
             NotFound ->
-                [ Html.text "Not found" ]
+                Page.NotFound.view
+        ]
     }

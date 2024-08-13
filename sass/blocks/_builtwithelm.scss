@@ -1,5 +1,5 @@
 .builtwithelm {
-  padding: 20px;
+  padding: 10px;
 }
 
 .builtwithelm__sidebar {
@@ -25,6 +25,12 @@
 
   .links {
     margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 350px) {
+  .builtwithelm {
+    padding: 20px;
   }
 }
 

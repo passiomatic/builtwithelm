@@ -1,4 +1,4 @@
-module Pager exposing
+module Data.Pager exposing
     ( Page
     , Pager
     , currentPage
@@ -12,10 +12,10 @@ module Pager exposing
 
 
 type Pager a
-    = Pager (Settings a) (State a)
+    = Pager (Config a) (State a)
 
 
-type alias Settings a =
+type alias Config a =
     { perPage : Int
     , toSearchTerm : a -> String
     }
@@ -28,6 +28,23 @@ type alias State a =
     }
 
 
+fromList : Int -> (a -> String) -> List a -> Pager a
+fromList perPage toSearchTerm data =
+    let
+        config =
+            Config (clamp 5 100 perPage) toSearchTerm
+
+        state =
+            State data 1 ""
+    in
+    Pager config state
+
+
+withPerPage : Int -> Pager a -> Pager a
+withPerPage perPage (Pager config state) =
+    Pager { config | perPage = clamp 5 100 perPage } state
+
+
 type alias Page a =
     { data : List a
     , pageNumber : Int
@@ -36,68 +53,51 @@ type alias Page a =
     }
 
 
-fromList : Int -> (a -> String) -> List a -> Pager a
-fromList perPage toSearchTerm data =
-    let
-        settings =
-            Settings (clamp 1 100 perPage) toSearchTerm
-
-        state =
-            State data 1 ""
-    in
-    Pager settings state
-
-
-withPerPage : Int -> Pager a -> Pager a
-withPerPage perPage (Pager settings state) =
-    Pager { settings | perPage = clamp 1 100 perPage } state
-
-
 currentPage : Pager a -> Page a
-currentPage (Pager settings state) =
+currentPage (Pager config state) =
     let
         { filteredData, pageNumber, hasPrev, hasNext } =
-            derivedState settings state
+            toCurrentPageState config state
 
         data =
             filteredData
-                |> List.drop ((pageNumber - 1) * settings.perPage)
-                |> List.take settings.perPage
+                |> List.drop ((pageNumber - 1) * config.perPage)
+                |> List.take config.perPage
     in
     Page data pageNumber hasPrev hasNext
 
 
 searchFor : String -> Pager a -> Pager a
-searchFor query (Pager settings state) =
-    Pager settings { state | query = query }
+searchFor query (Pager config state) =
+    Pager config { state | query = query }
 
 
 goto : Int -> Pager a -> Pager a
-goto pageNumber (Pager settings state) =
-    Pager settings { state | pageNumber = max 1 pageNumber }
+goto pageNumber (Pager config state) =
+    Pager config { state | pageNumber = max 1 pageNumber }
 
 
 prev : Pager a -> Pager a
-prev ((Pager settings state) as pager) =
+prev ((Pager config state) as pager) =
     let
         { pageNumber, hasPrev } =
-            derivedState settings state
+            toCurrentPageState config state
     in
     if hasPrev then
-        Pager settings { state | pageNumber = pageNumber - 1 }
+        Pager config { state | pageNumber = pageNumber - 1 }
 
     else
         pager
 
 
 next : Pager a -> Pager a
-next ((Pager settings state) as pager) =
+next ((Pager config state) as pager) =
     let
         { pageNumber, hasNext } =
-            derivedState settings state
+            toCurrentPageState config state
     in
     if hasNext then
-        Pager settings { state | pageNumber = pageNumber + 1 }
+        Pager config { state | pageNumber = pageNumber + 1 }
 
     else
         pager
@@ -107,7 +107,7 @@ next ((Pager settings state) as pager) =
 -- HELPERS
 
 
-type alias DerivedState a =
+type alias CurrentPageState a =
     { filteredData : List a
     , totalPages : Int
     , pageNumber : Int
@@ -116,22 +116,22 @@ type alias DerivedState a =
     }
 
 
-derivedState : Settings a -> State a -> DerivedState a
-derivedState settings state =
+toCurrentPageState : Config a -> State a -> CurrentPageState a
+toCurrentPageState config state =
     let
-        isSimilar elem =
-            String.contains
-                (String.toLower state.query)
-                (String.toLower (settings.toSearchTerm elem))
-
         filteredData =
             List.filter isSimilar state.data
+
+        isSimilar item =
+            String.contains
+                (String.toLower state.query)
+                (String.toLower (config.toSearchTerm item))
 
         total =
             List.length filteredData
 
         totalPages =
-            numberOfPages total settings.perPage
+            toTotalPages total config.perPage
 
         pageNumber =
             if total == 0 then
@@ -146,16 +146,16 @@ derivedState settings state =
         hasNext =
             pageNumber < totalPages
     in
-    DerivedState filteredData totalPages pageNumber hasPrev hasNext
+    CurrentPageState filteredData totalPages pageNumber hasPrev hasNext
 
 
-numberOfPages : Int -> Int -> Int
-numberOfPages totalPages perPage =
+toTotalPages : Int -> Int -> Int
+toTotalPages total perPage =
     let
         n =
-            totalPages // perPage
+            total // perPage
     in
-    if modBy perPage totalPages == 0 then
+    if modBy perPage total == 0 then
         n
 
     else
