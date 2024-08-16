@@ -2,6 +2,8 @@ module Page.Home exposing
     ( InitOptions
     , Model
     , Msg
+    , UpdateOptions
+    , ViewOptions
     , init
     , update
     , view

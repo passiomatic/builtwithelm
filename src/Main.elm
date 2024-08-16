@@ -3,7 +3,6 @@ module Main exposing (main)
 import Browser as B
 import Browser.Navigation as BN
 import Data.Route as Route
-import Html as H
 import Page.Home
 import Page.NotFound
 import Url exposing (Url)
