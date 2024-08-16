@@ -30,19 +30,29 @@
 
 @media screen and (min-width: 350px) {
   .builtwithelm {
-    padding: 20px;
+    --space: 20px;
+
+    padding: var(--space);
   }
 }
 
 @media screen and (min-width: 770px) {
   .builtwithelm {
-    display: flex;
-    gap: 40px;
+    --sidebar-width: 300px;
+
+    max-width: 1400px;
   }
 
   .builtwithelm__sidebar {
     margin-bottom: 0;
-    min-width: 280px;
+
+    padding-left: 5px;
+    padding-right: var(--space);
+    width: var(--sidebar-width);
+    height: calc(100% - (2 * var(--space)));
+
+    position: fixed;
+    overflow-y: auto;
 
     .builtwithelm__footer {
       display: block;
@@ -50,7 +60,8 @@
   }
 
   .builtwithelm__content {
-    width: 100%;
+    margin-left: calc(var(--sidebar-width) + var(--space));
+
     display: flex;
     flex-direction: column;
     align-items: center;
