@@ -17,6 +17,7 @@ import Html as H
 import Html.Attributes as HA
 import Html.Events as HE
 import Http
+import Lib.Browser.Dom as BD
 import Lib.RemoteData as RemoteData exposing (RemoteData)
 
 
@@ -27,7 +28,7 @@ import Lib.RemoteData as RemoteData exposing (RemoteData)
 type alias Model =
     { key : BN.Key
     , remoteData : RemoteData (Pager Project)
-    , pageSize : Int
+    , perPage : Int
     , query : String
     , pageNumber : Int
     }
@@ -44,7 +45,7 @@ init : InitOptions msg -> ( Model, Cmd msg )
 init { key, params, onChange } =
     ( { key = key
       , remoteData = RemoteData.Loading
-      , pageSize = 5
+      , perPage = 5
       , query = Maybe.withDefault "" params.query
       , pageNumber = Maybe.withDefault 1 params.pageNumber
       }
@@ -78,17 +79,33 @@ withParams params model =
 
 type Msg
     = GotProjects (Result Http.Error (List Project))
+    | ClickedPrev
+    | ClickedNext
+    | ScrolledToTop
+    | InputPerPage String
+    | InputQuery String
 
 
-update : Msg -> Model -> ( Model, Cmd msg )
-update msg model =
+type alias UpdateOptions msg =
+    { onChange : Msg -> msg
+    }
+
+
+update : UpdateOptions msg -> Msg -> Model -> ( Model, Cmd msg )
+update { onChange } msg model =
+    updateHelper msg model
+        |> Tuple.mapSecond (Cmd.map onChange)
+
+
+updateHelper : Msg -> Model -> ( Model, Cmd Msg )
+updateHelper msg model =
     case msg of
         GotProjects result ->
             ( case result of
                 Ok projects ->
                     let
                         pager =
-                            Pager.fromList model.pageSize .name projects
+                            Pager.fromList model.perPage .name projects
                                 |> Pager.searchFor model.query
                                 |> Pager.goto model.pageNumber
                     in
@@ -99,13 +116,93 @@ update msg model =
             , Cmd.none
             )
 
+        ClickedPrev ->
+            let
+                remoteData =
+                    RemoteData.map Pager.prev model.remoteData
+            in
+            ( { model | remoteData = remoteData }
+            , Cmd.batch
+                [ scrollToTop
+                , BN.pushUrl model.key <|
+                    homeHref model.query (currentPageNumber remoteData)
+                ]
+            )
+
+        ClickedNext ->
+            let
+                remoteData =
+                    RemoteData.map Pager.next model.remoteData
+            in
+            ( { model | remoteData = remoteData }
+            , Cmd.batch
+                [ scrollToTop
+                , BN.pushUrl model.key <|
+                    homeHref model.query (currentPageNumber remoteData)
+                ]
+            )
+
+        ScrolledToTop ->
+            ( model, Cmd.none )
+
+        InputPerPage perPageAsString ->
+            ( let
+                perPage =
+                    String.toInt perPageAsString
+                        |> Maybe.withDefault 5
+
+                remoteData =
+                    RemoteData.map (Pager.withPerPage perPage) model.remoteData
+              in
+              { model | remoteData = remoteData, perPage = perPage }
+            , scrollToTop
+            )
+
+        InputQuery query ->
+            let
+                remoteData =
+                    RemoteData.map (Pager.searchFor query) model.remoteData
+            in
+            ( { model | remoteData = remoteData, query = query }
+            , Cmd.batch
+                [ scrollToTop
+                , BN.pushUrl model.key <|
+                    homeHref query (currentPageNumber remoteData)
+                ]
+            )
+
+
+scrollToTop : Cmd Msg
+scrollToTop =
+    BD.scrollToTop ScrolledToTop
+
+
+homeHref : String -> Int -> String
+homeHref query pageNumber =
+    Route.toString <|
+        Route.Home
+            { query = Just query
+            , pageNumber = Just pageNumber
+            }
+
+
+currentPageNumber : RemoteData (Pager a) -> Int
+currentPageNumber =
+    RemoteData.map (Pager.currentPage >> .pageNumber)
+        >> RemoteData.withDefault 1
+
 
 
 -- VIEW
 
 
-view : Model -> H.Html msg
-view model =
+type alias ViewOptions msg =
+    { onChange : Msg -> msg
+    }
+
+
+view : ViewOptions msg -> Model -> H.Html msg
+view { onChange } model =
     case model.remoteData of
         RemoteData.Loading ->
             --
@@ -119,9 +216,27 @@ view model =
                     Pager.currentPage pager
             in
             H.div [ HA.class "builtwithelm" ]
-                [ viewSidebar
-                , viewContent page.data
+                [ viewSidebar InputQuery
+                , viewContent
+                    { projects = page.data
+                    , current = model.perPage
+                    , values = [ 5, 25, 50, 100 ]
+                    , onInputPerPage = InputPerPage
+                    , maybeOnPrev =
+                        if page.hasPrev then
+                            Just ClickedPrev
+
+                        else
+                            Nothing
+                    , maybeOnNext =
+                        if page.hasNext then
+                            Just ClickedNext
+
+                        else
+                            Nothing
+                    }
                 ]
+                |> H.map onChange
 
         RemoteData.Failure ->
             --
@@ -130,28 +245,49 @@ view model =
             H.text "Sorry, we're unable to load the projects."
 
 
-viewSidebar : H.Html msg
-viewSidebar =
+viewSidebar : (String -> msg) -> H.Html msg
+viewSidebar onInputQuery =
     H.div [ HA.class "builtwithelm__sidebar" ]
         [ viewHeading
-        , viewSearch Nothing
+        , viewSearch onInputQuery
         , viewFooter
         ]
 
 
-viewContent : List Project -> H.Html msg
-viewContent projects =
+viewContent : ViewProjectsOptions msg -> H.Html msg
+viewContent projectsOptions =
     H.div [ HA.class "builtwithelm__content" ]
-        [ viewProjects projects
+        [ viewProjects projectsOptions
         , viewFooter
         ]
 
 
-viewProjects : List Project -> H.Html msg
-viewProjects projects =
-    H.div [ HA.class "builtwithelm__projects" ] <|
-        List.map viewProject projects
-            ++ [ viewPager ]
+type alias ViewProjectsOptions msg =
+    { projects : List Project
+    , current : Int
+    , values : List Int
+    , onInputPerPage : String -> msg
+    , maybeOnPrev : Maybe msg
+    , maybeOnNext : Maybe msg
+    }
+
+
+viewProjects : ViewProjectsOptions msg -> H.Html msg
+viewProjects { projects, current, values, onInputPerPage, maybeOnPrev, maybeOnNext } =
+    if List.isEmpty projects then
+        H.div [ HA.class "builtwithelm__projects" ] []
+
+    else
+        H.div [ HA.class "builtwithelm__projects" ] <|
+            List.map viewProject projects
+                ++ [ viewPager
+                        { current = current
+                        , values = values
+                        , onInputPerPage = onInputPerPage
+                        , maybeOnPrev = maybeOnPrev
+                        , maybeOnNext = maybeOnNext
+                        }
+                   ]
 
 
 viewFooter : H.Html msg
@@ -185,20 +321,15 @@ viewHeading =
         ]
 
 
-viewSearch : Maybe (String -> msg) -> H.Html msg
-viewSearch maybeOnInput =
+viewSearch : (String -> msg) -> H.Html msg
+viewSearch onInput =
     H.form [ HA.class "search" ]
         [ H.input
             [ HA.class "search__input"
             , HA.type_ "text"
             , HA.placeholder "Find an awesome Elm web app"
             , HA.autofocus True
-            , case maybeOnInput of
-                Just onInput ->
-                    HE.onInput onInput
-
-                Nothing ->
-                    HA.disabled True
+            , HE.onInput onInput
             ]
             []
         ]
@@ -264,38 +395,63 @@ viewLinks =
         ]
 
 
-viewPager : H.Html msg
-viewPager =
+viewPager :
+    { current : Int
+    , values : List Int
+    , onInputPerPage : String -> msg
+    , maybeOnPrev : Maybe msg
+    , maybeOnNext : Maybe msg
+    }
+    -> H.Html msg
+viewPager { current, values, onInputPerPage, maybeOnPrev, maybeOnNext } =
     H.div [ HA.class "pager" ]
         [ H.div [ HA.class "pager__setting" ]
-            [ viewPageSize
+            [ viewPerPage
+                { current = current
+                , values = values
+                , onInput = onInputPerPage
+                }
             ]
         , H.div [ HA.class "pager__buttons" ]
             [ viewButton
                 { text = "Newer"
-                , maybeOnClick = Nothing
+                , maybeOnClick = maybeOnPrev
                 }
             , viewButton
                 { text = "Older"
-                , maybeOnClick = Nothing
+                , maybeOnClick = maybeOnNext
                 }
             ]
         ]
 
 
-viewPageSize : H.Html msg
-viewPageSize =
+viewPerPage :
+    { current : Int
+    , values : List Int
+
+    --
+    -- TODO: Improve to PerPage -> msg.
+    --
+    , onInput : String -> msg
+    }
+    -> H.Html msg
+viewPerPage { current, values, onInput } =
+    let
+        toOption value =
+            H.option [ HA.value value ] [ H.text value ]
+
+        viewOptions =
+            List.map (toOption << String.fromInt) values
+    in
     H.div [ HA.class "setting" ]
-        [ H.label [ HA.for "page-size" ]
-            [ H.text "Page size"
-            ]
+        [ H.label [ HA.for "per-page" ] [ H.text "Projects per page" ]
         , H.text " "
-        , H.select [ HA.id "page-size" ]
-            [ H.option [ HA.value "5" ] [ H.text "5" ]
-            , H.option [ HA.value "25" ] [ H.text "25" ]
-            , H.option [ HA.value "50" ] [ H.text "50" ]
-            , H.option [ HA.value "100" ] [ H.text "100" ]
+        , H.select
+            [ HA.id "per-page"
+            , HA.value <| String.fromInt current
+            , HE.onInput onInput
             ]
+            viewOptions
         ]
 
 

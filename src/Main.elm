@@ -130,7 +130,11 @@ update msg model =
                 Home pageModel ->
                     let
                         ( newPageModel, pageCmd ) =
-                            Page.Home.update pageMsg pageModel
+                            Page.Home.update
+                                { onChange = ChangedHomePage
+                                }
+                                pageMsg
+                                pageModel
                     in
                     ( { model | page = Home newPageModel }
                     , pageCmd
@@ -150,7 +154,10 @@ view model =
     , body =
         [ case model.page of
             Home pageModel ->
-                Page.Home.view pageModel
+                Page.Home.view
+                    { onChange = ChangedHomePage
+                    }
+                    pageModel
 
             NotFound ->
                 Page.NotFound.view
