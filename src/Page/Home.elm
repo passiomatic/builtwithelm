@@ -18,6 +18,7 @@ import Data.Route as Route
 import Html as H
 import Html.Attributes as HA
 import Html.Events as HE
+import Html.Keyed as HK
 import Http
 import Lib.Browser.Dom as BD
 import Lib.RemoteData as RemoteData exposing (RemoteData)
@@ -280,15 +281,17 @@ viewProjects { projects, current, values, onInputPerPage, maybeOnPrev, maybeOnNe
         H.div [ HA.class "builtwithelm__projects" ] []
 
     else
-        H.div [ HA.class "builtwithelm__projects" ] <|
-            List.map viewProject projects
-                ++ [ viewPager
+        HK.node "div" [ HA.class "builtwithelm__projects" ] <|
+            List.map (\project -> ( project.primaryUrl, viewProject project )) projects
+                ++ [ ( "pager"
+                     , viewPager
                         { current = current
                         , values = values
                         , onInputPerPage = onInputPerPage
                         , maybeOnPrev = maybeOnPrev
                         , maybeOnNext = maybeOnNext
                         }
+                     )
                    ]
 
 
