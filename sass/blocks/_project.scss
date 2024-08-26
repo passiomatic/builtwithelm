@@ -24,7 +24,16 @@
   padding: 1.875%;
   padding-top: 3.25%;
 
-  & > img {
+  a {
+    display: inline-flex;
+
+    // Useful for debugging purposes
+    //
+    // outline: 1px solid green;
+    // opacity: 0.5;
+  }
+
+  img {
     width: 100%;
 
     // Useful for debugging purposes

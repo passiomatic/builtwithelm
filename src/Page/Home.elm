@@ -368,7 +368,13 @@ viewProject project =
         , H.p [ HA.class "project__description" ]
             [ H.text project.description ]
         , H.div [ HA.class "project__screenshot" ]
-            [ H.img [ HA.src project.previewImageUrl ] []
+            [ viewExternalLink
+                { href = project.primaryUrl
+                , content =
+                    Custom
+                        [ H.img [ HA.src project.previewImageUrl ] []
+                        ]
+                }
             ]
         ]
 
